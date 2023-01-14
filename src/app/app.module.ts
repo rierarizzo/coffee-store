@@ -11,7 +11,7 @@ import { PurchaseComponent } from './components/purchase/purchase.component';
 import { HeaderComponent } from './templates/header/header.component';
 import { FooterComponent } from './templates/footer/footer.component';
 import { ProductsComponent } from './components/products/products.component';
-import { UsersCreateComponent } from './components/users/users-modify/users-modify.component';
+import { UsersModifyComponent } from './components/users/users-modify/users-modify.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +23,7 @@ import { UsersCreateComponent } from './components/users/users-modify/users-modi
     HeaderComponent,
     FooterComponent,
     ProductsComponent,
-    UsersCreateComponent
+    UsersModifyComponent
   ],
   imports: [
     BrowserModule,
