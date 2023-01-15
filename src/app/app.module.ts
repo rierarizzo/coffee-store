@@ -46,15 +46,12 @@ import { UsersListComponent } from './components/users/users-list/users-list.com
     BrowserAnimationsModule,
     MatCardModule,
     MatInputModule,
-<<<<<<< HEAD
-    MatTableModule
-=======
+    MatTableModule,
     MatButtonModule,
     MatIconModule,
     MatToolbarModule,
     MatDividerModule,
     MatListModule
->>>>>>> 62803cce54f66aa4482dc435b3dc909cb74d6e65
   ],
   providers: [],
   bootstrap: [AppComponent]
