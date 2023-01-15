@@ -8,6 +8,12 @@ import { MatCardModule } from '@angular/material/card'
 import { MatInputModule } from '@angular/material/input'
 import { MatTableModule } from '@angular/material/table';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatListModule } from '@angular/material/list';
+
 /* Componentes creados */
 import { SignInComponent } from './components/sign-in/sign-in.component';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
@@ -40,7 +46,15 @@ import { UsersListComponent } from './components/users/users-list/users-list.com
     BrowserAnimationsModule,
     MatCardModule,
     MatInputModule,
+<<<<<<< HEAD
     MatTableModule
+=======
+    MatButtonModule,
+    MatIconModule,
+    MatToolbarModule,
+    MatDividerModule,
+    MatListModule
+>>>>>>> 62803cce54f66aa4482dc435b3dc909cb74d6e65
   ],
   providers: [],
   bootstrap: [AppComponent]
