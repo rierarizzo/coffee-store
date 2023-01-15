@@ -2,7 +2,7 @@
     <div>
         <mat-card-title>Modificar Usuario</mat-card-title>
     </div>
-    <form [formGroup]="userModify">
+    <form [formGroup]="userCurrent">
         <mat-form-field class="campos-field">
             <input matInput placeholder="Cedula" formControlName="idUser">
         </mat-form-field>
@@ -23,7 +23,7 @@
             <input matInput placeholder="Contraseña" formControlName="password">
         </mat-form-field>
 
-        <button mat-raised-button [disabled]="!userModify.valid" (click)="onSubmit()">Aceptar</button>
+        <button mat-raised-button [disabled]="!userCurrent.valid" (click)="onSubmit()">Aceptar</button>
         <button mat-raised-button color="accent" (click)="cancel()">Cancelar</button>
     </form>
 </mat-card>
