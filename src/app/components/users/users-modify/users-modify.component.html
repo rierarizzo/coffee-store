@@ -1,8 +1,8 @@
 <mat-card>
-    <div>
-        <mat-card-title>Modificar Usuario</mat-card-title>
+    <div class="form-title">
+        <mat-card-title class="form-title-style">Modificar Usuario</mat-card-title>
     </div>
-    <form [formGroup]="userCurrent">
+    <form [formGroup]="formModify" class="form-struct">
         <mat-form-field class="campos-field">
             <input matInput placeholder="Cedula" formControlName="idUser">
         </mat-form-field>
@@ -23,7 +23,17 @@
             <input matInput placeholder="Contraseña" formControlName="password">
         </mat-form-field>
 
-        <button mat-raised-button [disabled]="!userCurrent.valid" (click)="onSubmit()">Aceptar</button>
-        <button mat-raised-button color="accent" (click)="cancel()">Cancelar</button>
+        <mat-form-field appearance="fill">
+            <mat-label>Rol</mat-label>
+            <select formControlName="rol" matNativeControl required>
+              <option value="Client">Cliente</option>
+              <option value="Administrator">Administrador</option>
+            </select>
+          </mat-form-field>
+
+        <div class="button-struct">
+            <button mat-raised-button [disabled]="!formModify.valid" (click)="onSubmit()">Aceptar</button>
+            <button mat-raised-button color="accent" (click)="cancel()">Cancelar</button>
+        </div>
     </form>
 </mat-card>
