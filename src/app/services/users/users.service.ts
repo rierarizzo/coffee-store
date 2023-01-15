@@ -10,9 +10,6 @@ export class UsersService {
 
   constructor() { }
 
-  dataSource: any = [];
-  displayedColumns: string[] = ['Cedula', 'Nombres', 'Apellidos', 'Correo', 'Rol']
-
   dummyData: User[] = [
     {
       idUser: '000000000',
