@@ -6,6 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MatCardModule } from '@angular/material/card'
 import { MatInputModule } from '@angular/material/input'
+import { MatTableModule } from '@angular/material/table';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 /* Componentes creados */
 import { SignInComponent } from './components/sign-in/sign-in.component';
@@ -16,6 +17,7 @@ import { HeaderComponent } from './templates/header/header.component';
 import { FooterComponent } from './templates/footer/footer.component';
 import { ProductsComponent } from './components/products/products.component';
 import { UsersModifyComponent } from './components/users/users-modify/users-modify.component';
+import { UsersListComponent } from './components/users/users-list/users-list.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,8 @@ import { UsersModifyComponent } from './components/users/users-modify/users-modi
     HeaderComponent,
     FooterComponent,
     ProductsComponent,
-    UsersModifyComponent
+    UsersModifyComponent,
+    UsersListComponent
   ],
   imports: [
     BrowserModule,
@@ -36,7 +39,8 @@ import { UsersModifyComponent } from './components/users/users-modify/users-modi
     ReactiveFormsModule,
     BrowserAnimationsModule,
     MatCardModule,
-    MatInputModule
+    MatInputModule,
+    MatTableModule
   ],
   providers: [],
   bootstrap: [AppComponent]
