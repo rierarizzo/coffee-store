@@ -9,8 +9,7 @@ import { UsersListComponent } from './components/users/users-list/users-list.com
 const routes: Routes = [
   { path: '', component: MainPageComponent },
   /* Authentication */
-  { path: 'login', component: SignInComponent }
-  {path: '', component: MainPageComponent},
+  { path: 'login', component: SignInComponent },
   /* Rutas usuario */
   {path: 'adm-usuarios', component: UsersListComponent}
 ];
