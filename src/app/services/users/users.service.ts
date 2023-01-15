@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { User } from 'src/app/entities/users';
+import { MatTableDataSource } from '@angular/material/table';
 
 @Injectable({
   providedIn: 'root'
@@ -9,24 +10,59 @@ export class UsersService {
 
   constructor() { }
 
-  isAdmin(user:User):boolean{
-    return user.rol == 'A';
+  dummyData: User[] = [
+    {
+      idUser: '000000000',
+      name: 'Keneth Danilo',
+      lastname: 'Mero Minchala',
+      email: 'admin@gmail.com',
+      password: 'admin123',
+      rol: 'A'
+    },
+    {
+      idUser: '0151245245',
+      name: 'Andrés Luis',
+      lastname: 'Carvajal Lozano',
+      email: 'andresito@gmail.com',
+      password: 'pepitotrulo',
+      rol: 'U'
+    },
+    {
+      idUser: '0954658913',
+      name: 'Jorge Luis',
+      lastname: 'Charco Aguirre',
+      email: 'jorgito@gmail.com',
+      password: 'pepitotrulo',
+      rol: 'U'
+    },
+    {
+      idUser: '0957962158',
+      name: 'Andrea Lisbeth',
+      lastname: 'Romero Haro',
+      email: 'andrea@gmail.com',
+      password: 'pepitotrulo',
+      rol: 'U'
+    }
+  ];
+
+  isAdmin(user: User): boolean {
+    return user.rol.charAt(0) == 'A';
   }
 
-  createUser(user:User){
-
+  createUser(user: User) {
+    this.dummyData.push(user);
   }
 
-  getUsers(){
-
+  getUsers(): User[] {
+    return this.dummyData;
   }
 
-  modifyUser(user:User){
-
+  modifyUser(userNew: User, userOld: User) {
+    this.dummyData[this.dummyData.findIndex((us => us = userOld))] = userNew;
   }
 
-  deleteUser(user:User){
-
+  deleteUser(user: User) {
+    this.dummyData.splice(this.dummyData.findIndex((us => us = user)), 1)
   }
 
 }

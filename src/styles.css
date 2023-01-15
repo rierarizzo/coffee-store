@@ -1,4 +1,27 @@
 /* You can add global styles to this file, and also import other style files */
+<<<<<<< HEAD
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+=======
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,300&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Nunito', sans-serif;
+    font-size: 20px;
+}
+
+html,
+body {
+    height: 100%;
+    background-color: #fffde4;
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+>>>>>>> fd3ad3ab3e356ad2ca36c90d795a1c824595633d

@@ -1,13 +1,20 @@
 /* Componentes importados Angular */
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import {MatTableModule} from '@angular/material/table';
-import {FormsModule} from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
-/* Componentes creados */ 
+import { MatCardModule } from '@angular/material/card'
+import { MatTableModule } from '@angular/material/table';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatIconModule } from '@angular/material/icon';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatListModule } from '@angular/material/list';
+
+/* Componentes creados */
 import { SignInComponent } from './components/sign-in/sign-in.component';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { MainPageComponent } from './components/main-page/main-page.component';
@@ -15,7 +22,8 @@ import { PurchaseComponent } from './components/purchase/purchase.component';
 import { HeaderComponent } from './templates/header/header.component';
 import { FooterComponent } from './templates/footer/footer.component';
 import { ProductsComponent } from './components/products/products.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { UsersModifyComponent } from './components/users/users-modify/users-modify.component';
+import { UsersListComponent } from './components/users/users-list/users-list.component';
 import { ProductsViewComponent} from './components/Inventary/products/products-view/products-view.component';
 import { AddProductsComponent} from './components/Inventary/products/add-products/add-products.component';
 import { ModifyProductsComponent} from './components/Inventary/products/modify-products/modify-products.component';
@@ -35,6 +43,8 @@ import { DeleteCategoryComponent } from './components/Inventary/category/delete-
     HeaderComponent,
     FooterComponent,
     ProductsComponent,
+    UsersModifyComponent,
+    UsersListComponent,
     ProductsViewComponent,
     AddProductsComponent,
     ModifyProductsComponent,
@@ -51,7 +61,18 @@ import { DeleteCategoryComponent } from './components/Inventary/category/delete-
     MatTableModule,
     FormsModule,
     MatInputModule,
-    MatButtonModule
+    MatButtonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    MatCardModule,
+    MatInputModule,
+    MatTableModule,
+    MatButtonModule,
+    MatIconModule,
+    MatToolbarModule,
+    MatDividerModule,
+    MatListModule
   ],
   providers: [],
   bootstrap: [AppComponent]
