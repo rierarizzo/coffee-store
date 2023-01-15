@@ -1,10 +1,9 @@
-export interface products {
-    Codigo: String;
-    Nombre: String;
-    Precio:String;
-    Categoria: String;
+export interface Product {
+    Codigo: string;
+    Nombre: string;
+    Precio: string;
+    Categoria: string;
     Estado: string;
     Descripcion: string;
     Imagen: string;
-
 }
