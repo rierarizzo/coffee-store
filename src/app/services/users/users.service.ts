@@ -53,19 +53,19 @@ export class UsersService {
   }
 
   createUser(user: User) {
-    this.data.push(user);
+    this.dummyData.push(user);
   }
 
   getUsers(): User[] {
-    return this.data;
+    return this.dummyData;
   }
 
   modifyUser(userNew: User, userOld: User) {
-    this.data[this.data.findIndex((us => us = userOld))] = userNew;
+    this.dummyData[this.dummyData.findIndex((us => us = userOld))] = userNew;
   }
 
   deleteUser(user: User) {
-    this.data.splice(this.data.findIndex((us => us = user)), 1)
+    this.dummyData.splice(this.dummyData.findIndex((us => us = user)), 1)
   }
 
 }
