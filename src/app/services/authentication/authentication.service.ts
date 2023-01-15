@@ -5,5 +5,17 @@ import { Injectable } from '@angular/core';
 })
 export class AuthenticationService {
 
-  constructor() { }
+  signIn(): void {
+    // TODO: Implementación del método
+  }
+
+  signUp(): void {
+    // TODO: Implementación del método
+  }
+
+  signOut(): void {
+    // TODO: Implementación del método
+  }
+
+
 }
