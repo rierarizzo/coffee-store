@@ -17,7 +17,7 @@ export class UsersService {
       lastname: 'Mero Minchala',
       email: 'admin@gmail.com',
       password: 'admin123',
-      rol: 'A'
+      rol: 'Administrator'
     },
     {
       idUser: '0151245245',
@@ -25,7 +25,7 @@ export class UsersService {
       lastname: 'Carvajal Lozano',
       email: 'andresito@gmail.com',
       password: 'pepitotrulo',
-      rol: 'U'
+      rol: 'Client'
     },
     {
       idUser: '0954658913',
@@ -33,7 +33,7 @@ export class UsersService {
       lastname: 'Charco Aguirre',
       email: 'jorgito@gmail.com',
       password: 'pepitotrulo',
-      rol: 'U'
+      rol: 'Client'
     },
     {
       idUser: '0957962158',
@@ -41,7 +41,7 @@ export class UsersService {
       lastname: 'Romero Haro',
       email: 'andrea@gmail.com',
       password: 'pepitotrulo',
-      rol: 'U'
+      rol: 'Client'
     }
   ];
 
@@ -58,7 +58,7 @@ export class UsersService {
   }
 
   modifyUser(userNew: User, userOld: User) {
-    this.dummyData[this.dummyData.findIndex((us => us = userOld))] = userNew;
+    this.dummyData[this.dummyData.indexOf(userOld)] = userNew;
   }
 
   deleteUser(user: User) {
