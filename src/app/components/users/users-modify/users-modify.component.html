@@ -4,23 +4,23 @@
     </div>
     <form [formGroup]="userModify">
         <mat-form-field class="campos-field">
-            <input matInput placeholder="Cedula" formControlName="cedula">
+            <input matInput placeholder="Cedula" formControlName="idUser">
         </mat-form-field>
 
         <mat-form-field class="campos-field">
-            <input matInput placeholder="Nombres" formControlName="nombres">
+            <input matInput placeholder="Nombres" formControlName="name">
         </mat-form-field>
 
         <mat-form-field class="campos-field">
-            <input matInput placeholder="Apellidos" formControlName="apellidos">
+            <input matInput placeholder="Apellidos" formControlName="lastname">
         </mat-form-field>
 
         <mat-form-field class="campos-field">
-            <input matInput placeholder="Direccion" formControlName="direccion">
+            <input matInput placeholder="Correo Electrónico" formControlName="email">
         </mat-form-field>
 
         <mat-form-field class="campos-field">
-            <input matInput placeholder="Edad" formControlName="edad">
+            <input matInput placeholder="Contraseña" formControlName="password">
         </mat-form-field>
 
         <button mat-raised-button [disabled]="!userModify.valid" (click)="onSubmit()">Aceptar</button>

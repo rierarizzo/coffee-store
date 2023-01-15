@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
-import { NavigationExtras } from '@angular/router';
+import { User } from 'src/app/entities/users';
+import { UsersService } from 'src/app/services/users/users.service';
+import { Inject } from '@angular/core';
 
 @Component({
   selector: 'app-users-modify',
@@ -10,9 +12,19 @@ import { NavigationExtras } from '@angular/router';
 })
 export class UsersModifyComponent {
 
-  constructor(private dialogRef: MatDialogRef<UsersModifyComponent>) { }
+  constructor(private dialogRef: MatDialogRef<UsersModifyComponent>, private userService: UsersService, @Inject(String) private userOld: any) {
+    this.userOld = new FormGroup({
+      idUser: new FormControl('', Validators.required),
+      name: new FormControl('', Validators.required),
+      lastname: new FormControl('', Validators.required),
+      email: new FormControl('', Validators.required),
+      password: new FormControl('', Validators.required),
+    });
+  }
 
-  userModify = new FormGroup({
+  userNew: any;
+
+  userCurrent = new FormGroup({
     idUser: new FormControl('', Validators.required),
     name: new FormControl('', Validators.required),
     lastname: new FormControl('', Validators.required),
@@ -21,17 +33,15 @@ export class UsersModifyComponent {
   });
 
   onSubmit() {
-    let objToSend: NavigationExtras = {
-      queryParams: {
-        idUser: this.userModify.value.idUser,
-        name: this.userModify.value.name,
-        lastname: this.userModify.value.lastname,
-        email: this.userModify.value.email,
-        password: this.userModify.value.password,
-      },
-      skipLocationChange: false,
-      fragment: 'top'
-    }
+    <User>this.userNew({
+      idUser: this.userCurrent.value.idUser,
+      name: this.userCurrent.value.name,
+      lastname: this.userCurrent.value.lastname,
+      email: this.userCurrent.value.email,
+      password: this.userCurrent.value.password,
+    });
+
+    this.userService.modifyUser(this.userNew, this.userOld);
   }
 
   cancel() {
