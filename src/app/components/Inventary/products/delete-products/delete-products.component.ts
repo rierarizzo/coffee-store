@@ -6,5 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./delete-products.component.css']
 })
 export class DeleteProductsComponent {
-
+  ngOnInit(): void {
+  
+  }
 }
