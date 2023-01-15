@@ -3,6 +3,10 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import {MatTableModule} from '@angular/material/table';
+import {FormsModule} from '@angular/forms';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
 /* Componentes creados */ 
 import { SignInComponent } from './components/sign-in/sign-in.component';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
@@ -11,6 +15,15 @@ import { PurchaseComponent } from './components/purchase/purchase.component';
 import { HeaderComponent } from './templates/header/header.component';
 import { FooterComponent } from './templates/footer/footer.component';
 import { ProductsComponent } from './components/products/products.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ProductsViewComponent} from './components/Inventary/products/products-view/products-view.component';
+import { AddProductsComponent} from './components/Inventary/products/add-products/add-products.component';
+import { ModifyProductsComponent} from './components/Inventary/products/modify-products/modify-products.component';
+import { DeleteProductsComponent } from './components/Inventary/products/delete-products/delete-products.component';
+import { CategoryListComponent } from './components/Inventary/category/category-list/category-list.component';
+import { AddCategoryComponent } from './components/Inventary/category/add-category/add-category.component';
+import { ModifyCategoryComponent } from './components/Inventary/category/modify-category/modify-category.component';
+import { DeleteCategoryComponent } from './components/Inventary/category/delete-category/delete-category.component';
 
 @NgModule({
   declarations: [
@@ -21,11 +34,24 @@ import { ProductsComponent } from './components/products/products.component';
     PurchaseComponent,
     HeaderComponent,
     FooterComponent,
-    ProductsComponent
+    ProductsComponent,
+    ProductsViewComponent,
+    AddProductsComponent,
+    ModifyProductsComponent,
+    DeleteProductsComponent,
+    CategoryListComponent,
+    AddCategoryComponent,
+    ModifyCategoryComponent,
+    DeleteCategoryComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    MatTableModule,
+    FormsModule,
+    MatInputModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]
