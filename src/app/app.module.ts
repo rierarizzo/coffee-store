@@ -21,7 +21,6 @@ import { MainPageComponent } from './components/main-page/main-page.component';
 import { PurchaseComponent } from './components/purchase/purchase.component';
 import { HeaderComponent } from './templates/header/header.component';
 import { FooterComponent } from './templates/footer/footer.component';
-import { ProductsComponent } from './components/products/products.component';
 import { UsersModifyComponent } from './components/users/users-modify/users-modify.component';
 import { UsersListComponent } from './components/users/users-list/users-list.component';
 import { ProductsViewComponent} from './components/Inventary/products/products-view/products-view.component';
@@ -42,7 +41,6 @@ import { DeleteCategoryComponent } from './components/Inventary/category/delete-
     PurchaseComponent,
     HeaderComponent,
     FooterComponent,
-    ProductsComponent,
     UsersModifyComponent,
     UsersListComponent,
     ProductsViewComponent,
