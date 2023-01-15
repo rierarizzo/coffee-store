@@ -26,7 +26,8 @@ import { UsersModifyComponent } from './components/users/users-modify/users-modi
     PurchaseComponent,
     HeaderComponent,
     FooterComponent,
-    ProductsComponent
+    ProductsComponent,
+    UsersModifyComponent
   ],
   imports: [
     BrowserModule,
