@@ -13,7 +13,7 @@ export class UsersService {
   dataSource: any = [];
   displayedColumns: string[] = ['Cedula', 'Nombres', 'Apellidos', 'Correo', 'Rol']
 
-  data: User[] = [
+  dummyData: User[] = [
     {
       idUser: '000000000',
       name: 'Keneth Danilo',
