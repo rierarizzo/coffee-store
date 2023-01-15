@@ -4,11 +4,11 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card'
-import { MatInputModule } from '@angular/material/input'
 import { MatTableModule } from '@angular/material/table';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatDividerModule } from '@angular/material/divider';
@@ -24,6 +24,14 @@ import { FooterComponent } from './templates/footer/footer.component';
 import { ProductsComponent } from './components/products/products.component';
 import { UsersModifyComponent } from './components/users/users-modify/users-modify.component';
 import { UsersListComponent } from './components/users/users-list/users-list.component';
+import { ProductsViewComponent} from './components/Inventary/products/products-view/products-view.component';
+import { AddProductsComponent} from './components/Inventary/products/add-products/add-products.component';
+import { ModifyProductsComponent} from './components/Inventary/products/modify-products/modify-products.component';
+import { DeleteProductsComponent } from './components/Inventary/products/delete-products/delete-products.component';
+import { CategoryListComponent } from './components/Inventary/category/category-list/category-list.component';
+import { AddCategoryComponent } from './components/Inventary/category/add-category/add-category.component';
+import { ModifyCategoryComponent } from './components/Inventary/category/modify-category/modify-category.component';
+import { DeleteCategoryComponent } from './components/Inventary/category/delete-category/delete-category.component';
 
 @NgModule({
   declarations: [
@@ -36,11 +44,24 @@ import { UsersListComponent } from './components/users/users-list/users-list.com
     FooterComponent,
     ProductsComponent,
     UsersModifyComponent,
-    UsersListComponent
+    UsersListComponent,
+    ProductsViewComponent,
+    AddProductsComponent,
+    ModifyProductsComponent,
+    DeleteProductsComponent,
+    CategoryListComponent,
+    AddCategoryComponent,
+    ModifyCategoryComponent,
+    DeleteCategoryComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    BrowserAnimationsModule,
+    MatTableModule,
+    FormsModule,
+    MatInputModule,
+    MatButtonModule,
     FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,

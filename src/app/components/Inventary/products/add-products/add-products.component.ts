@@ -6,5 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./add-products.component.css']
 })
 export class AddProductsComponent {
-
+  ngOnInit(): void {
+  
+  }
 }
