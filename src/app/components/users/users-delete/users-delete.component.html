@@ -1,0 +1,14 @@
+<mat-card>
+    <div class="form-title">
+        <mat-card-title class="form-title-style">Eliminar Usuario</mat-card-title>
+    </div>
+    <form class="form-struct">
+        <label>
+            ¿Seguro desea eliminar el registro?
+        </label>
+        <div class="button-struct">
+            <button mat-raised-button (click)="onSubmit()">Aceptar</button>
+            <button mat-raised-button color="accent" (click)="cancel()">Cancelar</button>
+        </div>
+    </form>
+</mat-card>

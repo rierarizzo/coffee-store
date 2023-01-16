@@ -26,13 +26,14 @@
         <mat-form-field appearance="fill">
             <mat-label>Rol</mat-label>
             <select formControlName="rol" matNativeControl required>
-              <option value="Client">Cliente</option>
-              <option value="Administrator">Administrador</option>
+                <option value="Client">Cliente</option>
+                <option value="Administrator">Administrador</option>
             </select>
-          </mat-form-field>
+        </mat-form-field>
 
         <div class="button-struct">
-            <button mat-raised-button [disabled]="!formModify.valid" (click)="onSubmit()">Aceptar</button>
+            <button mat-raised-button color="primary" [disabled]="!formModify.valid"
+                (click)="onSubmit()">Aceptar</button>
             <button mat-raised-button color="accent" (click)="cancel()">Cancelar</button>
         </div>
     </form>
