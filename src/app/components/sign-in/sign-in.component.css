@@ -11,3 +11,18 @@ mat-form-field {
 .title {
     margin: 30px;
 }
+
+.aditionalInfo {
+    margin: 30px;
+    text-align: center;
+}
+
+.error {
+    margin: 20px;
+    margin-top: 0px;
+}
+
+.error mat-error {
+    font-size: smaller;
+    text-align: left;
+}
