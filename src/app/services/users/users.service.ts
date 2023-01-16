@@ -65,4 +65,13 @@ export class UsersService {
     this.dummyData.splice(this.dummyData.indexOf(user), 1)
   }
 
+  filterUsersRol(value: string): User[] {
+    return this.dummyData.filter((obj) => {
+      if (value == 'All') {
+        return this.dummyData
+      }else{
+        return obj.rol == value 
+      }
+    });
+  }
 }
