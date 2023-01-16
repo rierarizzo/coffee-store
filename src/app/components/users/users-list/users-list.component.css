@@ -1,0 +1,51 @@
+.label-rol-admin{
+    background-color: red;
+    padding: 0.5em;
+    border-radius: 1em;
+    font-size: small;
+    color: white;
+    font-weight: bolder;
+}
+.label-rol-client{
+    background-color: grey;
+    padding: 0.5em;
+    border-radius: 1em;
+    font-size: small;
+    color: white;
+    font-weight: bolder;
+}
+
+.buttons{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+.buttons-margin{
+    margin-right: 0.5em;
+    margin-left: 0.5em;
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+.button-modify{
+    background-color: #11C994;
+    padding: 0.5em;
+    border-radius: 1em;
+    font-size: small;
+    color: black;
+    font-weight: bolder;
+}
+
+.button-delete{
+    background-color: #D1275B;
+    padding: 0.5em;
+    border-radius: 1em;
+    font-size: small;
+    color: black;
+    font-weight: bolder;
+}
+
+.svg-form{
+    width: 1em;
+}

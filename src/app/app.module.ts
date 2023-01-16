@@ -6,6 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
+
 import { MatCardModule } from '@angular/material/card'
 import { MatTableModule } from '@angular/material/table';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -15,6 +16,7 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatListModule } from '@angular/material/list';
 
 
+import { MatDialogModule } from '@angular/material/dialog';
 /* Componentes creados */
 import { SignInComponent } from './components/sign-in/sign-in.component';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
@@ -22,7 +24,6 @@ import { MainPageComponent } from './components/main-page/main-page.component';
 import { PurchaseComponent } from './components/purchase/purchase.component';
 import { HeaderComponent } from './templates/header/header.component';
 import { FooterComponent } from './templates/footer/footer.component';
-import { ProductsComponent } from './components/products/products.component';
 import { UsersModifyComponent } from './components/users/users-modify/users-modify.component';
 import { UsersListComponent } from './components/users/users-list/users-list.component';
 import { ProductsViewComponent} from './components/Inventary/products/products-view/products-view.component';
@@ -43,7 +44,6 @@ import { DeleteCategoryComponent } from './components/Inventary/category/delete-
     PurchaseComponent,
     HeaderComponent,
     FooterComponent,
-    ProductsComponent,
     UsersModifyComponent,
     UsersListComponent,
     ProductsViewComponent,
@@ -73,7 +73,8 @@ import { DeleteCategoryComponent } from './components/Inventary/category/delete-
     MatIconModule,
     MatToolbarModule,
     MatDividerModule,
-    MatListModule
+    MatListModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]
