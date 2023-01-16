@@ -13,7 +13,7 @@ const routes: Routes = [
   /* Authentication */
   { path: 'login', component: SignInComponent },
   /* Rutas usuario */
-  {path: 'adm-users', component: UsersListComponent}
+  {path: 'adm-users', component: UsersListComponent},
   /* Rutas Producto */
   {path: 'adm-productos/agregar', component: AddProductsComponent},
   {path: 'adm-productos/view', component: ProductsViewComponent}
