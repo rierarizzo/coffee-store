@@ -62,7 +62,7 @@ export class UsersService {
   }
 
   deleteUser(user: User) {
-    this.dummyData.splice(this.dummyData.findIndex((us => us = user)), 1)
+    this.dummyData.splice(this.dummyData.indexOf(user), 1)
   }
 
 }

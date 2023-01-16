@@ -1,53 +1,59 @@
-<h1>Listado de Usuarios registrados en la Cafetería Virtual</h1>
-<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-    <ng-container matColumnDef="idUser">
-        <th mat-header-cell *matHeaderCellDef> Cedula </th>
-        <td mat-cell *matCellDef="let element"> {{element.idUser}} </td>
-    </ng-container>
+<div class="flex-component">
+    <div class="title-container title-content">
+        Listado de Usuarios registrados en la Cafetería Virtual
+    </div>
+    <div class="table-settings">
+        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+            <ng-container matColumnDef="idUser">
+                <th mat-header-cell *matHeaderCellDef> Cedula </th>
+                <td mat-cell *matCellDef="let element"> {{element.idUser}} </td>
+            </ng-container>
 
-    <ng-container matColumnDef="name">
-        <th mat-header-cell *matHeaderCellDef> Nombres </th>
-        <td mat-cell *matCellDef="let element"> {{element.name}} </td>
-    </ng-container>
+            <ng-container matColumnDef="name">
+                <th mat-header-cell *matHeaderCellDef> Nombres </th>
+                <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+            </ng-container>
 
-    <ng-container matColumnDef="lastname">
-        <th mat-header-cell *matHeaderCellDef> Apellidos </th>
-        <td mat-cell *matCellDef="let element"> {{element.lastname}} </td>
-    </ng-container>
+            <ng-container matColumnDef="lastname">
+                <th mat-header-cell *matHeaderCellDef> Apellidos </th>
+                <td mat-cell *matCellDef="let element"> {{element.lastname}} </td>
+            </ng-container>
 
-    <ng-container matColumnDef="email">
-        <th mat-header-cell *matHeaderCellDef> Correo </th>
-        <td mat-cell *matCellDef="let element"> {{element.email}} </td>
-    </ng-container>
+            <ng-container matColumnDef="email">
+                <th mat-header-cell *matHeaderCellDef> Correo </th>
+                <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+            </ng-container>
 
-    <ng-container matColumnDef="rol">
-        <th mat-header-cell *matHeaderCellDef> Rol </th>
-        <td mat-cell *matCellDef="let element">
-            <div *ngIf="element.rol=='Administrator' ; else conditionRol">
-                <label class="label-rol-admin"> {{element.rol}} </label>
-            </div>
-            <ng-template #conditionRol>
-                <div>
-                    <label class="label-rol-client"> {{element.rol}} </label>
-                </div>
-            </ng-template>
-        </td>
-    </ng-container>
+            <ng-container matColumnDef="rol">
+                <th mat-header-cell *matHeaderCellDef> Rol </th>
+                <td mat-cell *matCellDef="let element">
+                    <div *ngIf="element.rol=='Administrator' ; else conditionRol">
+                        <label class="label-rol-admin"> {{element.rol}} </label>
+                    </div>
+                    <ng-template #conditionRol>
+                        <div>
+                            <label class="label-rol-client"> {{element.rol}} </label>
+                        </div>
+                    </ng-template>
+                </td>
+            </ng-container>
 
-    <ng-container matColumnDef="accion">
-        <th mat-header-cell *matHeaderCellDef> Acción </th>
-        <td mat-cell *matCellDef="let element">
-            <div class="buttons">
-                <button class="button-modify buttons-margin" (click)="openUserModify(element)">
-                    <img class="svg-form" src="../../../../assets/icons-forms/file-pen-solid.svg">
-                </button>
-                <button class="button-delete buttons-margin" (click)="openUserDelete(element)">
-                    <img class="svg-form" src="../../../../assets/icons-forms/trash-solid.svg">
-                </button>
-            </div>
-        </td>
-    </ng-container>
+            <ng-container matColumnDef="accion">
+                <th mat-header-cell *matHeaderCellDef> Acción </th>
+                <td mat-cell *matCellDef="let element">
+                    <div class="buttons">
+                        <button class="button-modify buttons-margin" (click)="openUserModify(element)">
+                            <img class="svg-form" src="../../../../assets/icons-forms/file-pen-solid.svg">
+                        </button>
+                        <button class="button-delete buttons-margin" (click)="openUserDelete(element)">
+                            <img class="svg-form" src="../../../../assets/icons-forms/trash-solid.svg">
+                        </button>
+                    </div>
+                </td>
+            </ng-container>
 
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-</table>
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+    </div>
+</div>
