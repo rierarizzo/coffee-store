@@ -1,0 +1,70 @@
+<section class="General">
+    <div class="Gen1">
+        <div class="Card">
+            <h1>Sumario de articulos</h1>
+            <div class="horizontal_tit">
+                <p>Articulo</p>
+                <p>Precio</p>
+                <p>Cantidad</p>
+                <p>Total</p> 
+            </div>
+        </div>
+        <div class="Card_product">
+            <div class="imagen">
+                <img src="https://images.unsplash.com/photo-1519333796630-4b7d19ad1bb3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=580&q=80" alt="tasa de cafe">
+            </div>
+            <p>$8.50</p>
+            <div class="horizontal">
+
+                <button mat-button color="primary">-</button>
+                <p>1</p>
+                <button mat-button color="primary">+</button>
+            </div>
+            <p>$8.50</p>
+        </div>
+    </div>
+    <div class="Gen2">
+        <div class="Card">
+            <h1>Datos del cliente</h1>
+            <mat-form-field class="example-full-width">
+                <mat-label>Nombre</mat-label>
+                <input matInput placeholder="Nombre" value=" ">
+            </mat-form-field>
+            <div class="horizontal">
+            <mat-form-field class="example-full-width">
+                <mat-label>Dirección</mat-label>
+                <input matInput placeholder="Dirección" value=" ">
+            </mat-form-field>
+        </div>
+            <div class="horizontal">
+            <mat-form-field class="example-full-width">
+                <mat-label>Numero de tarjeta</mat-label>
+                <input matInput placeholder="Número" value=" ">
+            </mat-form-field>
+        </div>
+    
+            <div class="horizontal">
+                <mat-form-field class="example-full-width">
+                    <mat-label>expiracion</mat-label>
+                    <input matInput placeholder="Caducidad" value=" ">
+                </mat-form-field>
+                <mat-form-field class="example-full-width">
+                    <mat-label>CVV</mat-label>
+                    <input matInput placeholder="Digito" value=" ">
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="Card">
+            <h1>Resumen del pedido</h1>
+            <div>
+                <div>
+                    <p>subtotal</p>
+                </div>
+                <div>
+                    $8.50
+                </div>
+            </div>
+            <button mat-raised-button color="primary">Pagar Ahora</button>
+        </div>
+    </div>
+</section>
