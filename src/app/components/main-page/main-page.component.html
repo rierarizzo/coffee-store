@@ -1,1 +1,19 @@
-<p>main-page works!</p>
+<div class="parent">
+    <div *ngFor="let i of [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]">
+        <mat-card class="card">
+            <mat-card-header>
+                <mat-card-title>Café colombiano</mat-card-title>
+            </mat-card-header>
+            <div class="productImage">
+                <img mat-card-image src="https://banqueteseladio.cl/wp-content/uploads/2021/05/cafe.jpg" height="200px"
+                    width="200px" alt="Product">
+            </div>
+            <mat-card-content>
+                <p>$350</p>
+            </mat-card-content>
+            <mat-card-actions>
+                <a href="#" class="btn"><button mat-button>Agregar</button></a>
+            </mat-card-actions>
+        </mat-card>
+    </div>
+</div>

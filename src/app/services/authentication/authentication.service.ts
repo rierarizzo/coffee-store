@@ -37,11 +37,47 @@ export class AuthenticationService {
     }
 
     console.log("Ingreso exitoso");
+
+    let payload: Payload = {
+      id: user.idUser,
+      email: user.email,
+      rol: user.rol
+    }
+
+    localStorage.setItem(this.authenticationKey, JSON.stringify(payload));
     this.router.navigate(["/"]);
   }
 
   signUp(signUpRequest: SignUpRequest): void {
-    // TODO: Implementación del método
+    /* let user: User = {
+      name: signUpRequest.name,
+      email: signUpRequest.email,
+      lastname: signUpRequest.surname,
+      password: signUpRequest.password,
+      rol: "Client"
+    };
+
+    try {
+      this.userService.createUser(user);
+    } catch (e) {
+      Swal.default.fire(
+        'Error',
+        'Ha ocurrido un error inesperado',
+        'error'
+      );
+      return;
+    }
+    
+    console.log("Ingreso exitoso");
+
+    let payload: Payload = {
+      id: user.idUser,
+      email: user.email,
+      rol: user.rol
+    }
+
+    localStorage.setItem(this.authenticationKey, JSON.stringify(payload));
+    this.router.navigate(["/"]); */
   }
 
   signOut(): void {
@@ -49,4 +85,10 @@ export class AuthenticationService {
   }
 
 
+}
+
+export interface Payload {
+  id: string;
+  email: string;
+  rol: string;
 }
