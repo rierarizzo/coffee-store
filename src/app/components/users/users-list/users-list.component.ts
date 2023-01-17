@@ -4,6 +4,7 @@ import { User } from 'src/app/entities/users';
 import { UsersService } from 'src/app/services/users/users.service';
 import { UsersModifyComponent } from '../users-modify/users-modify.component';
 import { UsersDeleteComponent } from '../users-delete/users-delete.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-users-list',
@@ -13,8 +14,9 @@ import { UsersDeleteComponent } from '../users-delete/users-delete.component';
 export class UsersListComponent {
   dataSource: User[] = [];
   rol: string = "";
+  selectedItem: any;
 
-  constructor(private usersService: UsersService, private dialog: MatDialog) {
+  constructor(private router:Router, private usersService: UsersService, private dialog: MatDialog) {
     this.dataSource = this.usersService.getUsers();
   }
 
@@ -37,4 +39,10 @@ export class UsersListComponent {
       }
     });
   }
+
+  onChangeObj(valueSelect: string) {
+    this.dataSource = this.usersService.filterUsersRol(valueSelect);
+    console.log(this.dataSource);
+  }
+
 }

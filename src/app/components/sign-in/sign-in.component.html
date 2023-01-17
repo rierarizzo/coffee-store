@@ -1,27 +1,34 @@
 <mat-card>
     <mat-card-content>
-        <form #loginForm="ngForm">
+        <form [formGroup]="signInForm" (ngSubmit)="onSubmit()">
             <div class="title">
                 <h2>👤</h2>
                 <h2>I N I C I A R</h2>
                 <h2>S E S I Ó N</h2>
             </div>
             <mat-form-field>
-                <input matInput placeholder="Email" name="username" required>
-                <mat-error>
-                    Please provide a valid email address
-                </mat-error>
+                <input matInput placeholder="Email" name="email" required formControlName="email">
             </mat-form-field>
+            <div *ngIf="(signInFormControl.email.touched || submitted) && signInFormControl.email.errors?.required"
+                class="error">
+                <mat-error>El correo electrónico es requerido</mat-error>
+            </div>
+            <div *ngIf="signInFormControl.email.touched && signInFormControl.email.errors?.email" class="error">
+                <mat-error>Ingrese un correo electrónico valido</mat-error>
+            </div>
             <mat-form-field>
-                <input matInput type="password" placeholder="Password" name="password" required>
-                <mat-error>
-                    Please provide a valid password
-                </mat-error>
+                <input matInput type="password" placeholder="Contraseña" name="password" required
+                    formControlName="password">
             </mat-form-field>
-            <!-- <mat-error>
-                The username and password were not recognized
-            </mat-error> -->
-            <button mat-raised-button color="primary">Login</button>
+            <div *ngIf="(signInFormControl.password.touched || submitted) && signInFormControl.password.errors?.required"
+                class="error">
+                <mat-error>La contraseña es requerida</mat-error>
+            </div>
+            <button mat-raised-button color="primary">Inicia sesión</button>
         </form>
+        <div class="aditionalInfo">
+            <p>¿Aún no tienes una cuenta?</p>
+            <a routerLink="/register">Regístrate</a>
+        </div>
     </mat-card-content>
 </mat-card>

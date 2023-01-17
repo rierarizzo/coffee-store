@@ -1,1 +1,48 @@
-<p>sign-up works!</p>
+<mat-card>
+    <mat-card-content>
+        <form [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
+            <div class="title">
+                <h2>👤</h2>
+                <h2>C R E A R</h2>
+                <h2>C U E N T A</h2>
+            </div>
+            <mat-form-field>
+                <input matInput placeholder="Nombre" name="name" formControlName="name" required>
+            </mat-form-field>
+            <div *ngIf="(signUpFormControl.name.touched || submitted) && signUpFormControl.name.errors?.required"
+                class="error">
+                <mat-error>El nombre es requerido</mat-error>
+            </div>
+            <mat-form-field>
+                <input matInput placeholder="Apellido" name="surname" formControlName="surname" required>
+            </mat-form-field>
+            <div *ngIf="(signUpFormControl.surname.touched || submitted) && signUpFormControl.surname.errors?.required"
+                class="error">
+                <mat-error>El apellido es requerido</mat-error>
+            </div>
+            <mat-form-field>
+                <input matInput placeholder="Email" name="email" formControlName="email" required>
+            </mat-form-field>
+            <div *ngIf="(signUpFormControl.email.touched || submitted) && signUpFormControl.email.errors?.required"
+                class="error">
+                <mat-error>El correo electrónico es requerido</mat-error>
+            </div>
+            <div *ngIf="signUpFormControl.email.touched && signUpFormControl.email.errors?.email" class="error">
+                <mat-error>Ingrese un correo electrónico valido</mat-error>
+            </div>
+            <mat-form-field>
+                <input matInput type="password" placeholder="Contraseña" name="password" formControlName="password"
+                    required>
+            </mat-form-field>
+            <div *ngIf="(signUpFormControl.password.touched || submitted) && signUpFormControl.password.errors?.required"
+                class="error">
+                <mat-error>La contraseña es requerida</mat-error>
+            </div>
+            <button mat-raised-button color="primary">Registrarse</button>
+        </form>
+        <div class="aditionalInfo">
+            <p>¿Ya tienes una cuenta?</p>
+            <a routerLink="/login">Inicia sesión</a>
+        </div>
+    </mat-card-content>
+</mat-card>
