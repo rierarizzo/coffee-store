@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Product } from 'src/app/entities/products';
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -120,6 +121,14 @@ export class ProductsService {
 
   getDatos(): Product[] {
     return this.ProductData;
+  }
+
+  getProduct(): Product[] {
+    return this.ProductData;
+  }
+  
+  modifyProduct(productNew: Product, productOld: Product) {
+    this.ProductData[this.ProductData.indexOf(productOld)] = productNew;
   }
 
 }
