@@ -22,14 +22,12 @@ const routes: Routes = [
   /* Rutas usuario ADM */
   { path: 'adm-users', component: UsersListComponent },
   /* Rutas Producto */
-  { path: 'adm-productos/agregar', component: AddProductsComponent },
-  { path: 'adm-productos/view', component: ProductsViewComponent },
+  {path: 'adm-productos/add', component: AddProductsComponent},
+  {path: 'adm-productos/view', component: ProductsViewComponent},
+  {path: 'adm-productos/modify', component:ModifyProductsComponent},
   /* Rutas Cliente */
   { path: 'account', component: ClientsOptionsComponent },
   { path: 'edit-user', component: ClientsModifyComponent },
-  {path: 'adm-productos/add', component: AddProductsComponent},
-  {path: 'adm-productos/view', component: ProductsViewComponent},
-  {path: 'adm-productos/modify', component:ModifyProductsComponent}
 ];
 
 @NgModule({
