@@ -39,7 +39,7 @@ export class AuthenticationService {
     console.log("Ingreso exitoso");
 
     let payload: Payload = {
-      id: user.idUser,
+      id: user.id!,
       email: user.email,
       rol: user.rol
     }
@@ -109,10 +109,19 @@ export class AuthenticationService {
     return this.authenticationKey in localStorage;
   }
 
+  getUserFromLocalStorage(): User | undefined {
+    let payload: Payload = JSON.parse(localStorage.getItem(this.authenticationKey)!);
+    let user: User | undefined = this.userService.getUserById(payload.id);
+    if (user === undefined) {
+      throw new Error('El usuario no existe');
+    }
+    return user;
+  }
+
 }
 
 export interface Payload {
-  id: string;
+  id: number;
   email: string;
   rol: string;
 }

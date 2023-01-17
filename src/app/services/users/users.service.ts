@@ -88,6 +88,12 @@ export class UsersService {
     })
   }
 
+  getUserById(id: number): User | undefined {
+    return this.dummyData.find((user) => {
+      return user.id === id;
+    })
+  }
+
   filterUsersRol(value: string): User[] {
     return this.dummyData.filter((obj) => {
       if (value == 'All') {

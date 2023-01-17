@@ -43,6 +43,7 @@ import { ClientsOptionsComponent } from './components/clients/clients-options/cl
 import { ProductsDetailsComponent } from './components/Inventary/products/products-details/products-details.component';
 import { ProductConfirmationComponent } from './components/Inventary/products/product-confirmation/product-confirmation.component';
 import { AdmPanelComponent } from './components/adm/adm-panel/adm-panel.component';
+import { PurchaseConfirmationComponent } from './components/purchase-confirmation/purchase-confirmation.component';
 
 @NgModule({
   declarations: [
@@ -71,7 +72,8 @@ import { AdmPanelComponent } from './components/adm/adm-panel/adm-panel.componen
     ClientsOptionsComponent,
     ProductsDetailsComponent,
     ProductConfirmationComponent,
-    AdmPanelComponent
+    AdmPanelComponent,
+    PurchaseConfirmationComponent
   ],
   imports: [
     BrowserModule,
