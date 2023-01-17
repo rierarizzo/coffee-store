@@ -1,17 +1,60 @@
-table {
-    width: 100%;
-  }
-.component-filter{
-    padding: 0.5% !important; 
-    font-size: 15px;
-    font-weight: bold;
-    color: black;
-  }
-  .table{
-    margin-top: 1em;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-around;
-  }
+.component-product {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 1em;
+  justify-content: space-around;
+}
+
+.title-container {
+  margin-top: 2em;
+  margin-bottom: 1em;
+  border-radius: 0.5em;
+  background-color: #96d5e6;
+  justify-content: center;
+  align-items: center;
+  padding: 1em;
+}
+
+.title-content {
+  font-size: xx-large;
+  font-weight: bolder;
+}
+
+.table {
+  width: 80%;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+.buttons-margin {
+  margin-right: 0.5em;
+  margin-left: 0.5em;
+  margin-top: 1em;
+  margin-bottom: 1em;
   
+}
+
+.button-modify {
+  background-color: #11C994;
+  padding: 0.5em;
+  border-radius: 1em;
+  font-size: small;
+  color: black;
+  font-weight: bolder;
+}
+.button-delete {
+  background-color: #D1275B;
+  padding: 0.5em;
+  border-radius: 1em;
+  font-size: small;
+  color: black;
+  font-weight: bolder;
+}
+
+
+

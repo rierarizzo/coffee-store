@@ -1,0 +1,15 @@
+<mat-card>
+    <div class="form-title">
+        <mat-card-title class="form-title-style">Confirmación</mat-card-title>
+    </div>
+    <form class="form-struct">
+        <label style="text-align: center;">
+            ¿Está seguro que desea actualizar los datos de su cuenta?
+        </label>
+        <img src={{rutaGif}} width="100" height="100">
+        <div class="button-struct">
+            <button mat-raised-button color="primary" (click)="onSubmit()">Actualizar</button>
+            <button mat-raised-button color="accent" (click)="cancel()">Cancelar</button>
+        </div>
+    </form>
+</mat-card>

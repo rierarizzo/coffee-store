@@ -1,0 +1,29 @@
+<div class="form-design">
+    <div class="form-title">
+        <mat-card-title class="form-title-style">Actualizar Perfil</mat-card-title>
+    </div>
+    <form [formGroup]="formModify" class="form-struct">
+        <mat-form-field class="campos-field">
+            <input matInput placeholder="Cedula" formControlName="idUser">
+        </mat-form-field>
+
+        <mat-form-field class="campos-field">
+            <input matInput placeholder="Nombres" formControlName="name">
+        </mat-form-field>
+
+        <mat-form-field class="campos-field">
+            <input matInput placeholder="Apellidos" formControlName="lastname">
+        </mat-form-field>
+
+        <mat-form-field class="campos-field">
+            <input matInput placeholder="Correo Electrónico" formControlName="email">
+        </mat-form-field>
+
+        <div class="button-struct">
+             <!-- [disabled]="!formModify.valid" -->
+            <button mat-raised-button color="primary" [disabled]="!formModify.valid"             
+                (click)="openDialogConfirmation()">Actualizar</button>
+            <button mat-raised-button color="accent" (click)="cancel()">Cancelar</button>
+        </div>
+    </form>
+</div>

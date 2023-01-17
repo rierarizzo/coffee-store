@@ -2,6 +2,14 @@
     <div class="title-container title-content">
         Listado de Usuarios registrados en la Cafetería Virtual
     </div>
+    <div>
+        Filtro de búsqueda
+        <select [ngModel]="selectedItem" (ngModelChange)="onChangeObj($event)" class="comboBox">
+            <option selected value="All">Todos</option>
+            <option value="Client">Cliente</option>
+            <option value="Administrator">Administrador</option>
+        </select>
+    </div>
     <div class="table-settings">
         <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
             <ng-container matColumnDef="idUser">
