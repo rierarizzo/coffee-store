@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { User } from 'src/app/entities/users';
-import { MatTableDataSource } from '@angular/material/table';
 
 @Injectable({
   providedIn: 'root'
@@ -50,18 +49,29 @@ export class UsersService {
   }
 
   createUser(user: User) {
-    this.dummyData.push(user);
+    this.dummyData.push(this.generateIdUser(user));
   }
 
   getUsers(): User[] {
     return this.dummyData;
   }
 
-  getUser(user: User): any {
+  getUser(user: User): User {
     /* this.dummyData.find((obj) => {
       return obj.email == user.email && obj.password == user.password ? obj : undefined
     }); */
     /* return this.dummyData[this.dummyData.indexOf(user)]; */
+    return user;
+  }
+
+  generateIdUser(user:User):User{
+    if(this.dummyData.indexOf(user) == -1) {
+      user.id = 1;
+      return user;
+    }else{
+      user.id = this.dummyData.indexOf(this.dummyData[this.dummyData.length-1]) + 1
+      return user;
+    }
   }
 
   modifyUser(userNew: User, userOld: User) {
