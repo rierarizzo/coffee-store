@@ -35,8 +35,8 @@ export class SignInComponent implements OnInit {
       this.authenticationService.signIn(signInRequest);
     } else {
       Swal.default.fire(
-        'Error en credenciales',
-        'Tu correo o contraseña son incorrectos',
+        'Error',
+        'Los datos ingresados no son correctos',
         'error'
       )
     }
