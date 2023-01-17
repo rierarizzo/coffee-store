@@ -11,6 +11,7 @@ export class UsersService {
 
   dummyData: User[] = [
     {
+      id: 1,
       idUser: '000000000',
       name: 'Keneth Danilo',
       lastname: 'Mero Minchala',
@@ -19,6 +20,7 @@ export class UsersService {
       rol: 'Administrator'
     },
     {
+      id: 2,
       idUser: '0151245245',
       name: 'Andrés Luis',
       lastname: 'Carvajal Lozano',
@@ -27,6 +29,7 @@ export class UsersService {
       rol: 'Client'
     },
     {
+      id: 3,
       idUser: '0954658913',
       name: 'Jorge Luis',
       lastname: 'Charco Aguirre',
@@ -35,6 +38,7 @@ export class UsersService {
       rol: 'Client'
     },
     {
+      id: 4,
       idUser: '0957962158',
       name: 'Andrea Lisbeth',
       lastname: 'Romero Haro',
