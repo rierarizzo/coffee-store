@@ -36,6 +36,8 @@ import { ModifyCategoryComponent } from './components/Inventary/category/modify-
 import { DeleteCategoryComponent } from './components/Inventary/category/delete-category/delete-category.component';
 import { UsersDeleteComponent } from './components/users/users-delete/users-delete.component';
 import { UsersConfirmationComponent } from './components/users/users-confirmation/users-confirmation.component';
+import { ProductsDetailsComponent } from './components/Inventary/products/products-details/products-details.component';
+import { ProductConfirmationComponent } from './components/Inventary/products/product-confirmation/product-confirmation.component';
 
 @NgModule({
   declarations: [
@@ -57,7 +59,9 @@ import { UsersConfirmationComponent } from './components/users/users-confirmatio
     ModifyCategoryComponent,
     DeleteCategoryComponent,
     UsersDeleteComponent,
-    UsersConfirmationComponent
+    UsersConfirmationComponent,
+    ProductsDetailsComponent,
+    ProductConfirmationComponent
   ],
   imports: [
     BrowserModule,
