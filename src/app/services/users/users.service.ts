@@ -65,4 +65,15 @@ export class UsersService {
     this.dummyData.splice(this.dummyData.indexOf(user), 1)
   }
 
+  getUserByEmail(email: string): User | undefined {
+    let user = this.dummyData.find((user) => {
+      let u: User | undefined = undefined;
+      if (user.email == email) {
+        u = user;
+      }
+      return u;
+    })
+    return user;
+  }
+
 }

@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { AuthenticationService } from 'src/app/services/authentication/authentication.service';
 import { SignUpRequest } from 'src/app/services/authentication/requests/sign-up.request';
+
+import * as Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-sign-up',
@@ -13,7 +16,8 @@ export class SignUpComponent implements OnInit {
   submitted: boolean = false;
 
   constructor(
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private authenticationService: AuthenticationService
   ) { }
 
   ngOnInit() {
@@ -28,7 +32,14 @@ export class SignUpComponent implements OnInit {
   onSubmit() {
     this.submitted = true;
     if (this.signUpForm.valid) {
-      console.log("Es valido");
+      let signUpRequest: SignUpRequest = this.signUpForm.value;
+      this.authenticationService.signUp(signUpRequest);
+    } else {
+      Swal.default.fire(
+        'Error',
+        'Los datos ingresados no son correctos',
+        'error'
+      )
     }
   }
 

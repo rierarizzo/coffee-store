@@ -1,15 +1,19 @@
 import { Injectable } from '@angular/core';
+import { SignInRequest } from './requests/sign-in.request';
+import { SignUpRequest } from './requests/sign-up.request';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthenticationService {
 
-  signIn(): void {
+  public authenticationKey: string = "authenticatedUser";
+
+  signIn(signInRequest: SignInRequest): void {
     // TODO: Implementación del método
   }
 
-  signUp(): void {
+  signUp(signUpRequest: SignUpRequest): void {
     // TODO: Implementación del método
   }
 

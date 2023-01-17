@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { AuthenticationService } from 'src/app/services/authentication/authentication.service';
+
+import { SignInRequest } from '../../services/authentication/requests/sign-in.request';
+
+import * as Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-sign-in',
@@ -12,7 +17,8 @@ export class SignInComponent implements OnInit {
   submitted: boolean = false;
 
   constructor(
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private authenticationService: AuthenticationService
   ) { }
 
   ngOnInit() {
@@ -25,7 +31,14 @@ export class SignInComponent implements OnInit {
   onSubmit() {
     this.submitted = true;
     if (this.signInForm.valid) {
-      console.log("Es valido");
+      let signInRequest: SignInRequest = this.signInForm.value;
+      this.authenticationService.signIn(signInRequest);
+    } else {
+      Swal.default.fire(
+        'Error en credenciales',
+        'Tu correo o contraseña son incorrectos',
+        'error'
+      )
     }
   }
 
