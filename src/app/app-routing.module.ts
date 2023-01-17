@@ -11,6 +11,7 @@ import { AddProductsComponent } from './components/Inventary/products/add-produc
 import { ModifyProductsComponent } from './components/Inventary/products/modify-products/modify-products.component';
 import { ProductsViewComponent } from './components/Inventary/products/products-view/products-view.component';
 import { UsersListComponent } from './components/users/users-list/users-list.component';
+import { ComprasComponent } from './components/compras/compras.component';
 import { ProductsDetailsComponent } from './components/Inventary/products/products-details/products-details.component';
 
 
@@ -28,6 +29,8 @@ const routes: Routes = [
   /* Rutas Cliente */
   { path: 'account', component: ClientsOptionsComponent },
   { path: 'edit-user', component: ClientsModifyComponent },
+
+  { path: 'carrito', component:  ComprasComponent},
 ];
 
 @NgModule({

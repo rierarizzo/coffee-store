@@ -42,6 +42,8 @@ import { ClientsMessageComponent } from './components/clients/clients-message/cl
 import { ClientsOptionsComponent } from './components/clients/clients-options/clients-options.component';
 import { ProductsDetailsComponent } from './components/Inventary/products/products-details/products-details.component';
 import { ProductConfirmationComponent } from './components/Inventary/products/product-confirmation/product-confirmation.component';
+import { ComprasComponent } from './components/compras/compras.component';
+import {MatSelectModule} from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -69,7 +71,8 @@ import { ProductConfirmationComponent } from './components/Inventary/products/pr
     ClientsMessageComponent,
     ClientsOptionsComponent,
     ProductsDetailsComponent,
-    ProductConfirmationComponent
+    ProductConfirmationComponent,
+    ComprasComponent
   ],
   imports: [
     BrowserModule,
@@ -91,7 +94,8 @@ import { ProductConfirmationComponent } from './components/Inventary/products/pr
     MatDividerModule,
     MatListModule,
     MatDialogModule,
-    MatGridListModule
+    MatGridListModule,
+    MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]
