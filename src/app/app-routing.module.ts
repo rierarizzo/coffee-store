@@ -12,6 +12,7 @@ import { ModifyProductsComponent } from './components/Inventary/products/modify-
 import { ProductsViewComponent } from './components/Inventary/products/products-view/products-view.component';
 import { UsersListComponent } from './components/users/users-list/users-list.component';
 import { ProductsDetailsComponent } from './components/Inventary/products/products-details/products-details.component';
+import { AdmPanelComponent } from './components/adm/adm-panel/adm-panel.component';
 
 
 const routes: Routes = [
@@ -20,6 +21,7 @@ const routes: Routes = [
   { path: 'login', component: SignInComponent },
   { path: 'register', component: SignUpComponent },
   /* Rutas usuario ADM */
+  { path: 'adm-panel', component: AdmPanelComponent },
   { path: 'adm-users', component: UsersListComponent },
   /* Rutas Producto */
   {path: 'adm-productos/add', component: AddProductsComponent},

@@ -42,6 +42,7 @@ import { ClientsMessageComponent } from './components/clients/clients-message/cl
 import { ClientsOptionsComponent } from './components/clients/clients-options/clients-options.component';
 import { ProductsDetailsComponent } from './components/Inventary/products/products-details/products-details.component';
 import { ProductConfirmationComponent } from './components/Inventary/products/product-confirmation/product-confirmation.component';
+import { AdmPanelComponent } from './components/adm/adm-panel/adm-panel.component';
 
 @NgModule({
   declarations: [
@@ -69,7 +70,8 @@ import { ProductConfirmationComponent } from './components/Inventary/products/pr
     ClientsMessageComponent,
     ClientsOptionsComponent,
     ProductsDetailsComponent,
-    ProductConfirmationComponent
+    ProductConfirmationComponent,
+    AdmPanelComponent
   ],
   imports: [
     BrowserModule,

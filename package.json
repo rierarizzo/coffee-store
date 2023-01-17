@@ -23,7 +23,7 @@
     "@popperjs/core": "2.11.6",
     "@sweetalert2/theme-default": "^5.0.15",
     "rxjs": "~7.8.0",
-    "sweetalert2": "^11.7.0",
+    "sweetalert2": "^11.4.8",
     "tslib": "^2.4.1",
     "zone.js": "~0.12.0"
   },
