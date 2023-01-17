@@ -57,6 +57,13 @@ export class UsersService {
     return this.dummyData;
   }
 
+  getUser(user: User): any {
+    /* this.dummyData.find((obj) => {
+      return obj.email == user.email && obj.password == user.password ? obj : undefined
+    }); */
+    /* return this.dummyData[this.dummyData.indexOf(user)]; */
+  }
+
   modifyUser(userNew: User, userOld: User) {
     this.dummyData[this.dummyData.indexOf(userOld)] = userNew;
   }
@@ -69,8 +76,8 @@ export class UsersService {
     return this.dummyData.filter((obj) => {
       if (value == 'All') {
         return this.dummyData
-      }else{
-        return obj.rol == value 
+      } else {
+        return obj.rol == value
       }
     });
   }

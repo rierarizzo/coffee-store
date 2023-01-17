@@ -4,7 +4,7 @@
     </div>
     <div>
         Filtro de búsqueda
-        <select [ngModel]="selectedItem" (ngModelChange)="onChangeObj($event)">
+        <select [ngModel]="selectedItem" (ngModelChange)="onChangeObj($event)" class="comboBox">
             <option selected value="All">Todos</option>
             <option value="Client">Cliente</option>
             <option value="Administrator">Administrador</option>
