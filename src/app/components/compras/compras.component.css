@@ -1,0 +1,70 @@
+/*Poner en horizontal*/
+.General{
+    display: flex;
+    flex-direction: row;
+}
+
+.Gen1{
+    margin-left: 5%;
+    width: 60%;
+}
+
+.Gen2{
+    width: 30%;
+}
+
+.horizontal{
+    display: flex;
+    flex-direction: row;
+}
+
+.Card{
+    background-color: white;
+    border-radius: 10px;
+    margin: 15px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-left: 10px;
+    padding-right: 10px;
+    box-shadow: 5px 5px 5px 5px rgba(0,0,0,0.1);
+}
+
+.Card h1{
+    font-size: 36px;
+    font-weight: bold;
+    color: #2E2E2E;
+}
+
+.horizontal_tit{
+    display: flex;
+    flex-direction: row;
+    padding-left: 2%;
+    padding-right: 2%;
+    justify-content: space-between;
+}
+
+.imagen{
+    margin-left: 3%;
+    width: 15%;
+    height: 90%;
+}
+
+.imagen img{
+    width: 90%;
+    height: 90%;
+    border-radius: 10px;
+}
+
+.Card_product{
+    display: flex;
+    flex-direction: row;
+    background-color: white;
+    border-radius: 10px;
+    justify-content: space-between;
+    padding-right: 5%;
+    box-shadow: 5px 5px 5px 5px rgba(0,0,0,0.1);
+    margin: 15px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    align-items: center;
+}
