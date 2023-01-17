@@ -1,1 +1,36 @@
-<p>modify-products works!</p>
+<mat-card>
+    <div class="form-title">
+        <mat-card-title class="form-title-style">Modificar Productos</mat-card-title>
+    </div>
+    <form [formGroup]="formModify" class="form-struct">
+        <mat-form-field class="campos-field">
+            <input matInput placeholder="Codigo" formControlName="Codigo">
+        </mat-form-field>
+
+        <mat-form-field class="campos-field">
+            <input matInput placeholder="Nombre" formControlName="Nombre">
+        </mat-form-field>
+
+        <mat-form-field class="campos-field">
+            <input matInput placeholder="Precio" formControlName="Precio">
+        </mat-form-field>
+
+        <mat-form-field class="campos-field">
+            <input matInput placeholder="Categoria" formControlName="Categoria">
+        </mat-form-field>
+         
+        <mat-form-field class="campos-field">
+            <input matInput placeholder="Estado" formControlName="Estado">
+        </mat-form-field>
+
+        <mat-form-field class="campos-field">
+            <input matInput placeholder="Descripcion" formControlName="Descripcion">
+        </mat-form-field>
+
+        <div class="button-struct">
+            <button mat-raised-button color="primary" [disabled]="!formModify.valid"
+                (click)="onSubmit()">Aceptar</button>
+            <button mat-raised-button color="accent" (click)="cancel()">Cancelar</button>
+        </div>
+    </form>
+</mat-card>

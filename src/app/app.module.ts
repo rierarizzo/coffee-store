@@ -40,6 +40,8 @@ import { ClientsModifyComponent } from './components/clients/clients-modify/clie
 import { ClientsConfirmationComponent } from './components/clients/clients-confirmation/clients-confirmation.component';
 import { ClientsMessageComponent } from './components/clients/clients-message/clients-message.component';
 import { ClientsOptionsComponent } from './components/clients/clients-options/clients-options.component';
+import { ProductsDetailsComponent } from './components/Inventary/products/products-details/products-details.component';
+import { ProductConfirmationComponent } from './components/Inventary/products/product-confirmation/product-confirmation.component';
 
 @NgModule({
   declarations: [
@@ -65,7 +67,9 @@ import { ClientsOptionsComponent } from './components/clients/clients-options/cl
     ClientsModifyComponent,
     ClientsConfirmationComponent,
     ClientsMessageComponent,
-    ClientsOptionsComponent
+    ClientsOptionsComponent,
+    ProductsDetailsComponent,
+    ProductConfirmationComponent
   ],
   imports: [
     BrowserModule,
