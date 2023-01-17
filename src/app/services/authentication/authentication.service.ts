@@ -45,6 +45,7 @@ export class AuthenticationService {
     }
 
     localStorage.setItem(this.authenticationKey, JSON.stringify(payload));
+
     this.router.navigate(["/"]);
   }
 
@@ -81,9 +82,32 @@ export class AuthenticationService {
   }
 
   signOut(): void {
-    // TODO: Implementación del método
+    localStorage.removeItem(this.authenticationKey);
   }
 
+  userIsAdmin(): boolean {
+    if (localStorage.getItem(this.authenticationKey) === null) {
+      return false;
+    }
+
+    let user: Payload = JSON.parse(localStorage.getItem(this.authenticationKey)!);
+
+    return user.rol === "Administrator";
+  }
+
+  userIsClient(): boolean {
+    if (localStorage.getItem(this.authenticationKey) === null) {
+      return false;
+    }
+
+    let user: Payload = JSON.parse(localStorage.getItem(this.authenticationKey)!);
+
+    return user.rol === "Client";
+  }
+
+  userIsLogged(): boolean {
+    return this.authenticationKey in localStorage;
+  }
 
 }
 
