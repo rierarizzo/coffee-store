@@ -6,7 +6,7 @@
         <ul class="nav-links">
             <li><a routerLink="/">Menú</a></li>
             <li *ngIf="!this.authService.userIsLogged()"><a routerLink="/register">Registrate</a></li>
-            <li><a routerLink="/account">Mi cuenta</a></li>
+            <li *ngIf="this.authService.userIsLogged()"><a routerLink="/account">Mi cuenta</a></li>
             <li *ngIf="this.authService.userIsLogged() && this.authService.userIsAdmin()"><a
                     routerLink="/adm-panel">Administración</a></li>
         </ul>

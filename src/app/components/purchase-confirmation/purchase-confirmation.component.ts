@@ -1,5 +1,7 @@
 import { Component, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Product } from 'src/app/entities/products';
+import { User } from 'src/app/entities/users';
 
 @Component({
   selector: 'app-purchase-confirmation',
@@ -18,6 +20,6 @@ export class PurchaseConfirmationComponent {
 }
 
 export interface DialogData {
-  animal: string;
-  name: string;
+  client: User;
+  products: Product[];
 }
