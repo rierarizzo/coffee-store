@@ -20,7 +20,7 @@
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
-  <h2 style="margin-top: 15px; text-align: end;">Total a pagar: {{getTotalAmount() | currency}}</h2>
+  <h2 style="margin-top: 15px; text-align: end;">Subtotal a pagar: {{getTotalAmount() | currency}}</h2>
 </mat-dialog-content>
 <mat-dialog-actions align="end">
   <button mat-button mat-dialog-close>Cancelar</button>

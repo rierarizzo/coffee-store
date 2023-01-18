@@ -1,27 +1,52 @@
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Product } from 'src/app/entities/products';
 import { User } from 'src/app/entities/users';
+import { ProductsService } from 'src/app/services/products/products.service';
 
 @Component({
   selector: 'app-purchase-confirmation',
   templateUrl: './purchase-confirmation.component.html',
   styleUrls: ['./purchase-confirmation.component.css']
 })
-export class PurchaseConfirmationComponent {
+export class PurchaseConfirmationComponent implements OnInit {
 
   displayedColumns: string[] = ['name', 'description', 'price'];
-  dataSource = ELEMENT_DATA;
+  dataSource: any;
 
   constructor(
     public dialogRef: MatDialogRef<PurchaseConfirmationComponent>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData,
+    private productService: ProductsService
   ) { }
+
+  ngOnInit(): void {
+    let products: Product[] = this.productService.getProductsByCodes(
+      this.productService.getProductFromLocalStorage()
+    );
+
+    let productElements: ProductElement[] = [];
+    for (let product of products) {
+      productElements.push(this.mapProductEntityToTablePresentation(product));
+    }
+
+    this.dataSource = productElements;
+  }
 
   onNoClick(): void {
     this.dialogRef.close();
   }
 
+  mapProductEntityToTablePresentation(product: Product): ProductElement {
+    let productElement: ProductElement = {
+      name: product.Nombre,
+      description: product.Descripcion,
+      price: product.Precio
+    }
+
+    return productElement;
+  }
+  
   getTotalAmount(): number {
     let total: number = 0;
 
@@ -38,14 +63,8 @@ export interface DialogData {
   products: Product[];
 }
 
-export interface PeriodicElement {
+export interface ProductElement {
   name: string;
   description: string;
   price: number;
 }
-
-const ELEMENT_DATA: PeriodicElement[] = [
-  { name: 'Café colombiano', price: 5.56, description: 'Café 100% colombiano' },
-  { name: 'Dulce de 3 leches', price: 4.50, description: 'Delicioso dulce de 3 leches' },
-  { name: 'Frappé', price: 2.30, description: 'Le metió 4 al dibu' }
-];

@@ -150,7 +150,7 @@ export class ProductsService {
     })
   }
 
-  getProductsByIds(codes: string): Product[] {
+  getProductsByCodes(codes: string): Product[] {
     let productsToReturn: Product[] = [];
 
     for (let code of codes.split(",")) {
