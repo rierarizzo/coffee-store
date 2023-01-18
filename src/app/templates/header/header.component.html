@@ -11,6 +11,6 @@
                     routerLink="/adm-panel">Administración</a></li>
         </ul>
     </nav>
-    <a class="btn" (click)="openDialog()"><button>Carrito 🛒</button></a>
+    <a class="btn"*ngIf="this.authService.userIsLogged()" routerLink="/carshop" (click)="openDialog()"><button>Carrito 🛒</button></a>
     <a class="btn-logout" *ngIf="this.authService.userIsLogged()"><button (click)="logout()">Cerrar sesión</button></a>
 </header>

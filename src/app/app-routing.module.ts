@@ -13,6 +13,7 @@ import { ProductsViewComponent } from './components/Inventary/products/products-
 import { UsersListComponent } from './components/users/users-list/users-list.component';
 import { ProductsDetailsComponent } from './components/Inventary/products/products-details/products-details.component';
 import { AdmPanelComponent } from './components/adm/adm-panel/adm-panel.component';
+import { PayConfirmationComponent } from './components/pagos/pay-confirmation/pay-confirmation.component';
 
 
 const routes: Routes = [
@@ -30,6 +31,8 @@ const routes: Routes = [
   /* Rutas Cliente */
   { path: 'account', component: ClientsOptionsComponent },
   { path: 'edit-user', component: ClientsModifyComponent },
+   /* Rutas  Carrito */
+   { path: 'carshop', component: PayConfirmationComponent },
 ];
 
 @NgModule({

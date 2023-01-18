@@ -44,6 +44,7 @@ import { ProductsDetailsComponent } from './components/Inventary/products/produc
 import { ProductConfirmationComponent } from './components/Inventary/products/product-confirmation/product-confirmation.component';
 import { AdmPanelComponent } from './components/adm/adm-panel/adm-panel.component';
 import { PurchaseConfirmationComponent } from './components/purchase-confirmation/purchase-confirmation.component';
+import { PayConfirmationComponent } from './components/pagos/pay-confirmation/pay-confirmation.component';
 
 @NgModule({
   declarations: [
@@ -73,7 +74,8 @@ import { PurchaseConfirmationComponent } from './components/purchase-confirmatio
     ProductsDetailsComponent,
     ProductConfirmationComponent,
     AdmPanelComponent,
-    PurchaseConfirmationComponent
+    PurchaseConfirmationComponent,
+    PayConfirmationComponent
   ],
   imports: [
     BrowserModule,
