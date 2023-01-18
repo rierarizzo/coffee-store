@@ -8,13 +8,17 @@ import { ProductsService } from 'src/app/services/products/products.service';
   styleUrls: ['./main-page.component.css']
 })
 export class MainPageComponent {
-  
+
   defaultImagePath: string = "../../../assets/default-image.png";
 
   allProducts: Product[];
 
   constructor(private productService: ProductsService) {
     this.allProducts = productService.ProductData;
+  }
+
+  addToCart(product: Product) {
+    this.productService.saveProductInShoppingCart(product.Codigo);
   }
 
 }

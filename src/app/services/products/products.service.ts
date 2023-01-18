@@ -140,6 +140,26 @@ export class ProductsService {
     }
   }
 
+  getProductFromLocalStorage(): string {
+    return localStorage.getItem(this.shoppingCartKey)!;
+  }
+
+  getProductByCode(code: string): Product | undefined {
+    return this.ProductData.find((product) => {
+      return product.Codigo === code;
+    })
+  }
+
+  getProductsByIds(codes: string): Product[] {
+    let productsToReturn: Product[] = [];
+
+    for (let code of codes.split(",")) {
+      productsToReturn.push(this.getProductByCode(code)!);
+    }
+
+    return productsToReturn;
+  }
+
   deleteProduct(product:Product){
     this.ProductData.splice(this.ProductData.indexOf(product),1)
    }

@@ -12,7 +12,7 @@
                 <p>{{ product.Precio | currency }}</p>
             </mat-card-content>
             <mat-card-actions>
-                <a href="#" class="btn"><button mat-button>Agregar</button></a>
+                <a (click)="addToCart(product)" class="btn"><button mat-button>Agregar</button></a>
             </mat-card-actions>
         </mat-card>
     </div>
