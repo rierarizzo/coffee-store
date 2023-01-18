@@ -8,6 +8,7 @@ import { ModifyProductsComponent } from '../modify-products/modify-products.comp
 import { ProductsService } from 'src/app/services/products/products.service';
 import { DataSource } from '@angular/cdk/collections';
 import { ProductsDetailsComponent } from '../products-details/products-details.component';
+import { MatSnackBar } from '@angular/material/snack-bar';
 @Component({
   selector: 'app-products-view',
   templateUrl: './products-view.component.html',
@@ -36,13 +37,10 @@ export class ProductsViewComponent {
   }
 
   
-  OpenProductAdd(element: any) {
+  OpenProductAdd(){
     this.dialog.open(AddProductsComponent, {
-      width: '50%',
-      data: {
-        Product: element
-      }
-    });
+      width: '50%'
+    })
   }
 
   openProductDelete(element: Product) {
