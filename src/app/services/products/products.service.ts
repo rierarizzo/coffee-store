@@ -17,7 +17,7 @@ export class ProductsService {
       Categoria: 'Bebidas Calientes',
       Estado: 'Disponible',
       Descripcion: 'Capuchino de galletas oreo y preparado con café 100% puro soluble nescafé clásico y leche evaporada ',
-      Imagen: ''
+      Imagen: 'https://thumbs.dreamstime.com/b/capuchino-helado-del-frappe-oreo-107851612.jpg'
     },
     {
       Codigo: 'BC02',
@@ -26,7 +26,7 @@ export class ProductsService {
       Categoria: 'Bebidas Calientes',
       Estado: 'Disponible',
       Descripcion: 'Preparado con café 100% puro soluble nescafé clásico y leche evaporada ',
-      Imagen: ''
+      Imagen: 'https://www.cafescandelas.com/uploads/media_items/doble-espresso-500.500.500.s.jpg'
     },
     {
       Codigo: 'BC03',
@@ -35,7 +35,7 @@ export class ProductsService {
       Categoria: 'Bebidas Calientes',
       Estado: 'Activo',
       Descripcion: 'Preparado con café 100% puro soluble nescafé clásico y leche evaporada ',
-      Imagen: ''
+      Imagen: 'https://cdn0.recetasgratis.net/es/posts/4/2/6/cafe_americano_19624_orig.jpg'
     },
     {
       Codigo: 'BF04',

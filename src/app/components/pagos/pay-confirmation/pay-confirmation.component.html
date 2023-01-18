@@ -1,35 +1,42 @@
 <section class="General">
     <div class="Gen1">
-        <div class="Card">
-            <h1>Sumario de articulos</h1>
-            <div class="horizontal_tit">
-                <p>Articulo</p>
-                <p>Precio</p>
-                <p>Cantidad</p>
-                <p>Total</p>
-            </div>
-        </div>
-        <div class="Card_product">
-            <table>
-                <tr>
-            
-                <tr *ngFor="let dato of products">
-                    <td>{{dato.Nombre}}</td>
-                    
-                    <td>{{dato.Precio}}</td>
-                    <td><button mat-button (click)="aumentar()" color="primary">-</button>
-                        <p>Cantidad actual: {{ cantidad }}</p>
-                        <button mat-button color="primary">+</button></td>
-                    <td>  <p>$8.50</p></td>
-                </tr>
-              </table> 
-            </div>
-          
-        </div>
-   
+        <h2 mat-dialog-title>Carrito de compras</h2>
+        <mat-dialog-content class="mat-typography">
+            <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+                <caption style="margin: 20px;">Lista de productos</caption>
+                <ng-container matColumnDef="name">
+                    <th mat-header-cell *matHeaderCellDef> Nombre </th>
+                    <td mat-cell *matCellDef="let element"> {{ element.name }} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="price">
+                    <th mat-header-cell *matHeaderCellDef> Precio </th>
+                    <td mat-cell *matCellDef="let element"> {{ element.price | currency }} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="quantity">
+                    <th mat-header-cell *matHeaderCellDef> Cantidad </th>
+                    <td mat-cell *matCellDef="let element"> {{ element.canti }} 
+                        <button (click)="aumentar(element.code)" mat-button>+</button>
+                        <button (click)="disminuir(element.code)" mat-button>-</button>
+                    </td>
+                </ng-container>
+
+                <ng-container matColumnDef="total">
+                    <th mat-header-cell *matHeaderCellDef> Total </th>
+                    <td mat-cell *matCellDef="let element"> {{ (element.price * element.canti) | currency }} </td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+            <h2 style="margin-top: 15px; text-align: end;"></h2>
+        </mat-dialog-content>
+    </div>
+
     <div class="Gen2">
         <div class="Card">
-            <h1>Datos del cliente</h1>          
+            <h1>Datos del cliente</h1>
             <mat-form-field class="example-full-width">
                 <mat-label>Nombre</mat-label>
                 <input matInput placeholder="Nombre" value={{authenticatedUser.name}}>
@@ -64,10 +71,10 @@
                     <p>subtotal</p>
                 </div>
                 <div>
-                    $8.50
+                    {{ sumaTotal() | currency }}
                 </div>
             </div>
-            <button mat-raised-button color="primary">Pagar Ahora</button>
+            <button mat-raised-button color="primary" (click)="realizarCompra()">Pagar Ahora</button>
         </div>
     </div>
 </section>
