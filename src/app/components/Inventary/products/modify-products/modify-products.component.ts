@@ -6,7 +6,7 @@ import { ProductsService } from 'src/app/services/products/products.service';
 import { Product } from 'src/app/entities/products';
 import { ProductsViewComponent } from '../products-view/products-view.component';
 import { ProductConfirmationComponent } from '../product-confirmation/product-confirmation.component';
-
+import { MatSnackBar } from '@angular/material/snack-bar';
 @Component({
   selector: 'app-modify-products',
   templateUrl: './modify-products.component.html',
@@ -20,7 +20,7 @@ export class ModifyProductsComponent{
 
    constructor(private router: Router, @Inject(MAT_DIALOG_DATA) public data: any, 
    private dialogRef: MatDialogRef<ModifyProductsComponent>, private productsService: ProductsService, 
-   private formBuilder:FormBuilder, private dialog: MatDialog){
+   private formBuilder:FormBuilder, private dialog: MatDialog,private _snackBar: MatSnackBar){
      
    }
     
@@ -44,30 +44,40 @@ export class ModifyProductsComponent{
         }
    }
     onSubmit() {
-      this.productNew = {
+  
+      const producto: Product = {
         Codigo: this.formModify.value.Codigo,
         Nombre: this.formModify.value.Nombre,
         Precio: this.formModify.value.Precio,
         Categoria: this.formModify.value.Categoria,
         Estado: this.formModify.value.Estado,
-        Descripcion: this.formModify.value.Descripcion
-      };
+        Descripcion: this.formModify.value.Descripcion,
+        Imagen: ""
+      }
 
-      this.productOld = {
-        Codigo: this.data.Product.Codigo,
-        Nombre: this.data.Product.Nombre,
-        Precio: this.data.Product.Precio,
-        Categoria: this.data.Product.Categoria,
-        Estado: this.data.Product.Estado,
-        Descripcion: this.data.Product.Descripcion,
-        Imagen: this.data.Product.Imagen,
-      };
-      console.log(this.productNew);
-      console.log(this.productOld);
+      this._snackBar.open('El Producto '+this.data.Product.Codigo+ ' fue modificado con éxito','',{
+        duration: 1500,
+        horizontalPosition: 'start',
+        verticalPosition: 'bottom',
+        })
+
+
+
+      this.router.navigate(['/'])
+      .then(()=>this.router.navigate(['/adm-productos/view'],{state:{editarDatos: this.productsService.Modificar(producto)}}))
+  
+  
+      let currentUrl = this.router.url;
+      this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+      this.router.onSameUrlNavigation = 'reload';
+      this.router.navigate([currentUrl]);
+      
+  
+  
       this.dialogRef.close();
-      this.productsService.modifyProduct(this.productNew as Product, this.productOld as Product);
-      this.openConfirmation('Actualización de Producto');
-      this.redirecTo('/adm-productos/view');
+  
+  
+
     }
    
     openConfirmation(text: string) {
