@@ -13,7 +13,7 @@ export class ProductConfirmationComponent {
   
   constructor(private dialogRef: MatDialogRef<ProductConfirmationComponent>, 
     @Inject(MAT_DIALOG_DATA) public data: any) {
-    this.texto = this.data.texto;
+    this.texto = this.data.text;
     this.rutaGif = this.data.rutaGif;
     
   }

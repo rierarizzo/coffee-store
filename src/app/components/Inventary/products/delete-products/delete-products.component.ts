@@ -20,12 +20,12 @@ export class DeleteProductsComponent {
   onSubmit() {
     this.dialogRef.close();
     this.productsService.deleteProduct(this.data.Product);
-    this.openConfirmation('Eliminación de Usuario');
+    this.openConfirmation('Eliminación de Producto');
     this.redirecTo('/adm-productos/view');
   }
   openConfirmation(text: string) {
     this.dialog.open(ProductConfirmationComponent, {
-      width: '35%', data: { text: text}
+      width: '35%', data: { text: text, rutaGif: this.icon_gif}
     })
   }
   redirecTo(uri: string) {
