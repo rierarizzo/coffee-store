@@ -25,13 +25,19 @@ export class ProductsViewComponent {
   constructor(private productsService: ProductsService, private dialog: MatDialog) {
     this.dataSource = this.productsService.getDatos();
   };
-  openDialogAdd(){
-    this.openDialogAdd();
-    
+
+  openProductModify(element: any) {
+    this.dialog.open(ModifyProductsComponent, {
+      width: '50%',
+      data: {
+        Product: element
+      }
+    });
   }
 
-  openProductModify(element: Product) {
-    this.dialog.open(ModifyProductsComponent, {
+  
+  OpenProductAdd(element: any) {
+    this.dialog.open(AddProductsComponent, {
       width: '50%',
       data: {
         Product: element
@@ -53,9 +59,6 @@ export class ProductsViewComponent {
   }
  
 
-  OpenProductAdd(){
-
-  }
   openProductdDetail(element: Product){
     this.dialog.open(ProductsDetailsComponent,
       )

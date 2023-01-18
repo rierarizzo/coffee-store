@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { ProductsService } from 'src/app/services/products/products.service';
 @Component({
   selector: 'app-product-confirmation',
   templateUrl: './product-confirmation.component.html',
@@ -9,9 +10,9 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 export class ProductConfirmationComponent {
   texto: string = "";
   
-  constructor(private dialogRef: MatDialogRef<ProductConfirmationComponent>,
+  constructor(private dialogRef: MatDialogRef<ProductConfirmationComponent>, 
     @Inject(MAT_DIALOG_DATA) public data: any) {
-    this.texto = this.data.text;
+    this.texto = this.data.texto;
     
   }
   onSubmit() {
