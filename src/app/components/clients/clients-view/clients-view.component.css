@@ -1,0 +1,53 @@
+.form-design {
+    margin: 3em auto;
+    background-color: rgb(163, 214, 244);
+    width: 70%;
+    margin-top: 3em;
+    border-radius: 0.5em;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.form-struct {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.form-title {
+    text-align: center;
+}
+
+.form-title-style {
+    margin: 2em;
+}
+
+.campos-field {
+    width: 70%;
+}
+
+.button-struct {
+    width: 60%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 1em;
+}
+
+.main-button {
+    margin: 3em;
+    background-color: aquamarine;
+}
+
+.form-row{
+    width: 90%;
+    margin: 0.5em;
+    display: flex;
+    flex-direction: column;
+}
+
+.button-return{
+    border-radius: 0.5em;
+    border-color: black;
+    border-style: solid;
+    text-align: right;
+}

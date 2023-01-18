@@ -1,6 +1,6 @@
 <div class="grid">
     <div class="grid-container">
-        <div class="card" routerLink="#">
+        <div class="card" routerLink="/view-user">
             <img src={{icon_profile}} alt="Avatar" style="width:15%">
             <div class="container">
                 <h4><b>Cuenta</b></h4>
@@ -21,7 +21,7 @@
                 <p>Visualiza tus compras realizadas en nuestro sitio web.</p>
             </div>
         </div>
-        <div class="card" routerLink="/">
+        <div class="card" (click)="logout()">
             <img src={{icon_log_out}} alt="Avatar" style="width:15%">
             <div class="container">
                 <h4><b>Cerrar sesión</b></h4>

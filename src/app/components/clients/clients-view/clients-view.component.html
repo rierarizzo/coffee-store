@@ -1,0 +1,31 @@
+<div class="form-design">
+    <div class="form-title">
+        <mat-card-title class="form-title-style">Datos del Perfil</mat-card-title>
+    </div>
+    <form [formGroup]="formModify" class="form-struct">
+        <div class="form-row">
+            <label>Cédula:</label>
+            <mat-form-field class="campos-field form-row">
+                <input matInput placeholder="Cedula" formControlName="idUser" readonly>
+            </mat-form-field>
+        </div>
+        <div class="form-row">
+            <label>Nombres:</label>
+            <mat-form-field class="campos-field form-row">
+                <input matInput placeholder="Nombres" formControlName="name" readonly>
+            </mat-form-field>
+        </div>
+        <div class="form-row">
+            <label>Apellidos:</label>
+            <mat-form-field class="campos-field form-row">
+                <input matInput placeholder="Apellidos" formControlName="lastname" readonly>
+            </mat-form-field>
+        </div>
+        <div class="form-row">
+            <label>Correo Electrónico:</label>
+            <mat-form-field class="campos-field form-row">
+                <input matInput placeholder="Correo Electrónico" formControlName="email" readonly>
+            </mat-form-field>
+        </div>
+    </form>
+</div>
