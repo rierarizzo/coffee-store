@@ -41,7 +41,7 @@ export class HeaderComponent {
       {
         Codigo: 'BC01',
         Nombre: ' CAPUCHINO OREO ',
-        Precio: '4.50',
+        Precio: 4.50,
         Categoria: 'Bebidas Calientes',
         Estado: 'Disponible',
         Descripcion: 'Capuchino de galletas oreo y preparado con café 100% puro soluble nescafé clásico y leche evaporada ',
@@ -50,7 +50,7 @@ export class HeaderComponent {
       {
         Codigo: 'BC02',
         Nombre: ' Expreso Doble ',
-        Precio: '5.50',
+        Precio: 5.50,
         Categoria: 'Bebidas Calientes',
         Estado: 'Disponible',
         Descripcion: 'Preparado con café 100% puro soluble nescafé clásico y leche evaporada ',
@@ -60,6 +60,9 @@ export class HeaderComponent {
 
     const dialogRef = this.dialog.open(PurchaseConfirmationComponent, {
       data: {client: user, products: products},
+      panelClass: "matdialogStyle",
+      height: 'auto',
+      minWidth: '40%'
     });
 
     dialogRef.afterClosed().subscribe(result => {
