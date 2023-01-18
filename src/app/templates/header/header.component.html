@@ -11,6 +11,7 @@
                     routerLink="/adm-panel">Administración</a></li>
         </ul>
     </nav>
-    <a class="btn" *ngIf="this.authService.userIsLogged()" (click)="openDialog()"><button>Carrito 🛒</button></a>
+    <a class="btn" *ngIf="this.authService.userIsLogged() && !this.authService.userIsAdmin()" (click)="openDialog()"><button>Carrito 🛒</button></a>
+    <a class="btn-logout" *ngIf="!this.authService.userIsLogged()" routerLink="/login"><button>Iniciar sesión</button></a>
     <a class="btn-logout" *ngIf="this.authService.userIsLogged()"><button (click)="logout()">Cerrar sesión</button></a>
 </header>
