@@ -2,13 +2,12 @@
     <div class="form-title">
         <mat-card-title class="form-title-style">Modificar Productos</mat-card-title>
     </div>
-    <form [formGroup]="formModify" class="form-struct">
+    <form [formGroup]='formModify' class="form-struct">
         <mat-form-field class="campos-field">
-            <input matInput placeholder="Codigo" formControlName="Codigo">
-        </mat-form-field>
+            <input matInput formControlName="Codigo" #Codigo readonly> </mat-form-field>
 
         <mat-form-field class="campos-field">
-            <input matInput placeholder="Nombre" formControlName="Nombre">
+            <input matInput placeholder="Nombre" formControlName="Nombre" #Nombre >
         </mat-form-field>
 
         <mat-form-field class="campos-field">
@@ -18,7 +17,7 @@
         <mat-form-field class="campos-field">
             <input matInput placeholder="Categoria" formControlName="Categoria">
         </mat-form-field>
-         
+
         <mat-form-field class="campos-field">
             <input matInput placeholder="Estado" formControlName="Estado">
         </mat-form-field>

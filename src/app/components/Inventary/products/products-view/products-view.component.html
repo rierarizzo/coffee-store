@@ -3,14 +3,9 @@
     Listado de Productos 
 </div>
 <div class="header-table">
-  <button mat-raised-button color="accent" (click)="OpenProductAdd()"> Agregar</button>
+  <button mat-raised-button color="accent" (click)="OpenProductAdd"> Agregar</button>
   <div>
-      Ingrese lo que desea buscar:
-      <mat-form-field class="campos-field">
-          <input matInput placeholder="Filtro" [(ngModel)]='filter'>
-      </mat-form-field>
-  </div>
-</div>
+     
 
 <div class="table">
   <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">

@@ -1,13 +1,12 @@
-import { Component } from '@angular/core';
-import { Inject } from '@angular/core';
+import { Component, Inject, OnInit} from '@angular/core';
 import { Router } from '@angular/router';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators,FormBuilder } from '@angular/forms';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ProductsService } from 'src/app/services/products/products.service';
 import { Product } from 'src/app/entities/products';
 import { ProductsViewComponent } from '../products-view/products-view.component';
 import { ProductConfirmationComponent } from '../product-confirmation/product-confirmation.component';
-import { OnInit } from '@angular/core';
+
 @Component({
   selector: 'app-modify-products',
   templateUrl: './modify-products.component.html',
@@ -16,33 +15,34 @@ import { OnInit } from '@angular/core';
 export class ModifyProductsComponent{
   productOld: any;
   productNew: any;
+  formModify!:FormGroup;
 
-  constructor(private router: Router,
-    private dialog: MatDialog,
-     private dialogRef: MatDialogRef<ModifyProductsComponent>, 
-     private productsService: ProductsService,
-    @Inject(MAT_DIALOG_DATA) public data: any) {
-    this.formModify.setValue({
-      Codigo: data.product.Codigo,
-      Nombre: data.product.Nombre,
-      Precio: data.product.Precio,
-      Categoria: data.product.Categoria,
-      Estado: data.product.Estado,
-      Descripcion: data.product.Descripcion,
-      Imagen: data.product.Imagen
 
+   constructor(private router: Router, @Inject(MAT_DIALOG_DATA) public data: any, 
+   private dialogRef: MatDialogRef<ModifyProductsComponent>, private productsService: ProductsService, 
+   private formBuilder:FormBuilder, private dialog: MatDialog){
+     
+   }
+    
+   ngOnInit():void{
+      this.formModify = this.formBuilder.group({
+      Codigo:  ['', Validators.required],
+      Nombre:   ['', Validators.required],
+      Precio: ['', Validators.required],
+      Categoria:  ['', Validators.required],
+      Estado:  ['', Validators.required],
+      Descripcion:  ['', Validators.required]
     });
-  }
-    formModify = new FormGroup({
-      Codigo: new FormControl('', Validators.required),
-      Nombre: new FormControl('', Validators.required),
-      Precio: new FormControl('', Validators.required),
-      Categoria: new FormControl('', Validators.required),
-      Estado: new FormControl('', Validators.required),
-      Descripcion: new FormControl('', Validators.required),
-      Imagen: new FormControl('', Validators.required)
-    });
-
+ 
+    if(this.data){
+      this.formModify.controls['Codigo'].setValue(this.data.Product.Codigo),
+      this.formModify.controls['Nombre'].setValue(this.data.Product.Nombre),
+      this.formModify.controls['Precio'].setValue(this.data.Product.Precio),
+      this.formModify.controls['Categoria'].setValue(this.data.Product.Categoria),
+      this.formModify.controls['Estado'].setValue(this.data.Product.Estado),
+      this.formModify.controls['Descripcion'].setValue(this.data.Product.Descripcion)
+        }
+   }
     onSubmit() {
       this.productNew = {
         Codigo: this.formModify.value.Codigo,
@@ -50,12 +50,23 @@ export class ModifyProductsComponent{
         Precio: this.formModify.value.Precio,
         Categoria: this.formModify.value.Categoria,
         Estado: this.formModify.value.Estado,
-        Descripcion: this.formModify.value.Descripcion,
-        Imagen: this.formModify.value.Imagen
+        Descripcion: this.formModify.value.Descripcion
       };
+
+      this.productOld = {
+        Codigo: this.data.Product.Codigo,
+        Nombre: this.data.Product.Nombre,
+        Precio: this.data.Product.Precio,
+        Categoria: this.data.Product.Categoria,
+        Estado: this.data.Product.Estado,
+        Descripcion: this.data.Product.Descripcion,
+        Imagen: this.data.Product.Imagen,
+      };
+      console.log(this.productNew);
+      console.log(this.productOld);
       this.dialogRef.close();
-      this.productsService.modifyProduct(this.productNew as Product, this.data.product as Product);
-      this.openConfirmation('Producto Modificado');
+      this.productsService.modifyProduct(this.productNew as Product, this.productOld as Product);
+      this.openConfirmation('Actualización de Producto');
       this.redirecTo('/adm-productos/view');
     }
    
