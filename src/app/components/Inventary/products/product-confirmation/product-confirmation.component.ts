@@ -9,10 +9,12 @@ import { ProductsService } from 'src/app/services/products/products.service';
 })
 export class ProductConfirmationComponent {
   texto: string = "";
+  rutaGif: string = "";
   
   constructor(private dialogRef: MatDialogRef<ProductConfirmationComponent>, 
     @Inject(MAT_DIALOG_DATA) public data: any) {
     this.texto = this.data.texto;
+    this.rutaGif = this.data.rutaGif;
     
   }
   onSubmit() {
