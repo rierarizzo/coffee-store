@@ -1,12 +1,12 @@
 <div class="grid">
     <div class="grid-container">
-        <div class="card" routerLink="#">
+        <!-- <div class="card" routerLink="#">
             <img src={{icon_profile}} alt="Avatar" style="width:15%">
             <div class="container">
                 <h4><b>Cuenta</b></h4>
                 <p>Visualizar los datos de la cuenta registrada.</p>
             </div>
-        </div>
+        </div> -->
         <div class="card" routerLink="/adm-users">
             <img src={{icon_profile}} alt="Avatar" style="width:15%">
             <div class="container">
@@ -28,7 +28,7 @@
                 <p>Visualiza todas las compras realizadas en el sitio web.</p>
             </div>
         </div>
-        <div class="card log_out" (click)="logout()">
+        <div class="card" (click)="logout()">
             <img src={{icon_log_out}} alt="Avatar" style="width:15%">
             <div class="container">
                 <h4><b>Cerrar sesión</b></h4>
