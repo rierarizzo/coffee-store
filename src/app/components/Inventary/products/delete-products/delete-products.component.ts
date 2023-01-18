@@ -9,7 +9,7 @@ import { ProductConfirmationComponent } from '../product-confirmation/product-co
   styleUrls: ['./delete-products.component.css']
 })
 export class DeleteProductsComponent {
-
+  icon_gif: string = "../../../../assets/icons-gif/bin.gif";
   constructor(private router: Router, 
   @Inject(MAT_DIALOG_DATA) public data: any, 
   private dialogRef: MatDialogRef<DeleteProductsComponent>,
