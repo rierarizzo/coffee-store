@@ -50,7 +50,7 @@ export class AuthenticationService {
   }
 
   signUp(signUpRequest: SignUpRequest): void {
-    /* let user: User = {
+    let user: User = {
       name: signUpRequest.name,
       email: signUpRequest.email,
       lastname: signUpRequest.surname,
@@ -59,7 +59,7 @@ export class AuthenticationService {
     };
 
     try {
-      this.userService.createUser(user);
+      user = this.userService.createUser(user);
     } catch (e) {
       Swal.default.fire(
         'Error',
@@ -72,13 +72,13 @@ export class AuthenticationService {
     console.log("Ingreso exitoso");
 
     let payload: Payload = {
-      id: user.idUser,
+      id: user.id!,
       email: user.email,
       rol: user.rol
     }
 
     localStorage.setItem(this.authenticationKey, JSON.stringify(payload));
-    this.router.navigate(["/"]); */
+    this.router.navigate(["/"]);
   }
 
   signOut(): void {
