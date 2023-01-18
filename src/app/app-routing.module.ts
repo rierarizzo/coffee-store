@@ -14,6 +14,7 @@ import { UsersListComponent } from './components/users/users-list/users-list.com
 import { ProductsDetailsComponent } from './components/Inventary/products/products-details/products-details.component';
 import { AdmPanelComponent } from './components/adm/adm-panel/adm-panel.component';
 import { PayConfirmationComponent } from './components/pagos/pay-confirmation/pay-confirmation.component';
+import { ClientsViewComponent } from './components/clients/clients-view/clients-view.component';
 
 
 const routes: Routes = [
@@ -29,6 +30,7 @@ const routes: Routes = [
   {path: 'adm-productos/view', component: ProductsViewComponent},
   {path: 'adm-productos/modify', component:ModifyProductsComponent},
   /* Rutas Cliente */
+  { path: 'view-user', component: ClientsViewComponent },
   { path: 'account', component: ClientsOptionsComponent },
   { path: 'edit-user', component: ClientsModifyComponent },
    /* Rutas  Carrito */

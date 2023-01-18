@@ -52,18 +52,22 @@ export class UsersService {
     return user.rol.charAt(0) == 'A';
   }
 
-  createUser(user: User) {
-    this.dummyData.push(this.generateIdUser(user));
+  createUser(user: User): User {
+    let userToReturn: User = this.generateIdUser(user)!;
+
+    this.dummyData.push(userToReturn);
+
+    return userToReturn;
   }
 
   getUsers(): User[] {
     return this.dummyData;
   }
 
-  getUser(user: User): User {
-    /* this.dummyData.find((obj) => {
+  getUser(user: User): User | null{
+    this.dummyData.find((obj) => {
       return obj.email == user.email && obj.password == user.password ? obj : undefined
-    }); */
+    });
     /* return this.dummyData[this.dummyData.indexOf(user)]; */
     return user;
   }

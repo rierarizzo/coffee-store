@@ -4,6 +4,7 @@ import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { User } from 'src/app/entities/users';
 import { ClientsConfirmationComponent } from '../clients-confirmation/clients-confirmation.component';
 import { UsersService } from 'src/app/services/users/users.service';
+import { AuthenticationService } from 'src/app/services/authentication/authentication.service';
 
 @Component({
   selector: 'app-clients-modify',
@@ -15,11 +16,11 @@ export class ClientsModifyComponent {
   userOld: any;
   userNew: any;
 
-  constructor(private dialog: MatDialog, private userService: UsersService) {
-    this.userOld = this.userService.getUser(this.userOld as User);
+  constructor(private dialog: MatDialog, private userService: UsersService, private authService: AuthenticationService) {
+    this.userOld = this.authService.getUserFromLocalStorage();
     if (this.userOld != null) {
       this.formModify.setValue({
-        idUser: this.userOld.id,
+        idUser: this.userOld.idUser,
         name: this.userOld.name,
         lastname: this.userOld.lastname,
         email: this.userOld.email
@@ -40,8 +41,8 @@ export class ClientsModifyComponent {
       name: this.formModify.value.name,
       lastname: this.formModify.value.lastname,
       email: this.formModify.value.email,
-      /* password: this.userOld.password,
-      rol: this.userOld.password */
+      password: this.userOld.password,
+      rol: this.userOld.password
     };
     this.openConfirmation('Actualización de Perfil');
   }
