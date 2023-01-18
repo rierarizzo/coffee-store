@@ -1,6 +1,6 @@
 <mat-card>
     <div class="form-title">
-        <mat-card-title class="form-title-style">Modificar Usuario</mat-card-title>
+        <mat-card-title class="form-title-style">Agregar Producto</mat-card-title>
     </div>
     <form [formGroup]="formAdd" class="form-struct">
         <mat-form-field class="campos-field">
@@ -26,10 +26,14 @@
         <mat-form-field class="campos-field">
             <input matInput placeholder="Descripcion" formControlName="Descripcion">
         </mat-form-field>
+
+        <mat-form-field class="campos-field">
+            <input matInput placeholder="Imagen" formControlName="Imagen">
+        </mat-form-field>
         
         <div class="button-struct">
             <button mat-raised-button color="primary" [disabled]="!formAdd.valid"
-                (click)="onSubmit()">Aceptar</button>
+                (click)="productAdd()">Aceptar</button>
             <button mat-raised-button color="accent" (click)="cancel()">Cancelar</button>
         </div>
     </form>
