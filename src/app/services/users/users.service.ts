@@ -52,8 +52,12 @@ export class UsersService {
     return user.rol.charAt(0) == 'A';
   }
 
-  createUser(user: User) {
-    this.dummyData.push(this.generateIdUser(user));
+  createUser(user: User): User {
+    let userToReturn: User = this.generateIdUser(user)!;
+
+    this.dummyData.push(userToReturn);
+
+    return userToReturn;
   }
 
   getUsers(): User[] {
