@@ -11,7 +11,7 @@ import { ProductsService } from 'src/app/services/products/products.service';
 })
 export class PurchaseConfirmationComponent implements OnInit {
 
-  displayedColumns: string[] = ['name', 'description', 'price'];
+  displayedColumns: string[] = ['name', 'description', 'price', 'delete'];
   dataSource: any;
 
   constructor(
@@ -37,8 +37,14 @@ export class PurchaseConfirmationComponent implements OnInit {
     this.dialogRef.close();
   }
 
+  deleteProduct(productElement: ProductElement) {
+    this.productService.deleteProductInLocalStorage(productElement.code);
+    this.ngOnInit();
+  }
+
   mapProductEntityToTablePresentation(product: Product): ProductElement {
     let productElement: ProductElement = {
+      code: product.Codigo,
       name: product.Nombre,
       description: product.Descripcion,
       price: product.Precio
@@ -64,6 +70,7 @@ export interface DialogData {
 }
 
 export interface ProductElement {
+  code: string;
   name: string;
   description: string;
   price: number;

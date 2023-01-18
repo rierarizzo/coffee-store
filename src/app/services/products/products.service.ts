@@ -124,7 +124,7 @@ export class ProductsService {
   getDatos(): Product[] {
     return this.ProductData;
   }
-  
+
   modifyProduct(productNew: Product, productOld: Product) {
     this.ProductData[this.ProductData.indexOf(productOld)] = productNew;
   }
@@ -153,15 +153,55 @@ export class ProductsService {
   getProductsByCodes(codes: string): Product[] {
     let productsToReturn: Product[] = [];
 
-    for (let code of codes.split(",")) {
+    if (codes === null) {
+      console.log("No hay productos");
+      return productsToReturn;
+    }
+
+    if (!codes.includes(",")) {
+      productsToReturn.push(this.getProductByCode(codes)!);
+      return productsToReturn;
+    }
+
+    let codesArray: string[] = codes.split(",");
+
+    for (let code of codesArray) {
       productsToReturn.push(this.getProductByCode(code)!);
     }
 
     return productsToReturn;
   }
 
-  deleteProduct(product:Product){
-    this.ProductData.splice(this.ProductData.indexOf(product),1)
-   }
+  deleteProductInLocalStorage(code: string) {
+    if (localStorage.getItem(this.shoppingCartKey) === null) {
+      console.log("El carro está vacío");
+      return;
+    }
+
+    if (!localStorage.getItem(this.shoppingCartKey)!.includes(",")) {
+      console.log("El carro solo tiene un elemento");
+      localStorage.removeItem(this.shoppingCartKey);
+      return;
+    }
+
+    let codes: string[] = localStorage.getItem(this.shoppingCartKey)!.split(",");
+
+    console.log("Todos los códigos guardados en localStorage -> " + codes);
+
+    let index = codes.indexOf(code);
+
+    console.log("Index del código a eliminar -> " + index);
+
+    codes.splice(index, 1);
+
+    localStorage.removeItem(this.shoppingCartKey);
+    for (let code of codes) {
+      this.saveProductInShoppingCart(code);
+    }
+  }
+
+  deleteProduct(product: Product) {
+    this.ProductData.splice(this.ProductData.indexOf(product), 1)
+  }
 
 }
