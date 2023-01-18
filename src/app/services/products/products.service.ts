@@ -6,6 +6,9 @@ import { Product } from 'src/app/entities/products';
   providedIn: 'root'
 })
 export class ProductsService {
+
+  public shoppingCartKey: string = "shoppingCart";
+
   ProductData: Product[] = [
     {
       Codigo: 'BC01',
@@ -117,7 +120,6 @@ export class ProductsService {
     },
 
   ]
-  constructor() { }
 
   getDatos(): Product[] {
     return this.ProductData;
@@ -126,9 +128,20 @@ export class ProductsService {
   getProduct(): Product[] {
     return this.ProductData;
   }
-  
+
   modifyProduct(productNew: Product, productOld: Product) {
     this.ProductData[this.ProductData.indexOf(productOld)] = productNew;
+  }
+
+  saveProductInShoppingCart(productCode: string) {
+    if (this.shoppingCartKey in localStorage) {
+      let productSavedInLocalStorage: string = localStorage.getItem(this.shoppingCartKey)!;
+      productCode = productSavedInLocalStorage + "," + productCode
+
+      localStorage.setItem(this.shoppingCartKey, productCode);
+    } else {
+      localStorage.setItem(this.shoppingCartKey, productCode);
+    }
   }
 
 }
