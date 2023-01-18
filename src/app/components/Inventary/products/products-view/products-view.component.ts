@@ -52,10 +52,6 @@ export class ProductsViewComponent {
     });
   }
 
-  Searcher() {
-   this.dataSource= this.filter;
-  }
- 
 
   openProductdDetail(element: Product){
     this.dialog.open(ProductsDetailsComponent,
