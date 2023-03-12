@@ -1,4 +1,7 @@
-export interface SignIn {
-    email: string
-    password: string
+export interface SignInResponse {
+    statusCode: number;
+    accessToken: string;
+    userID: number;
+    userEmail: string;
+    userRole: string;
 }

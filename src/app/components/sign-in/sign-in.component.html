@@ -17,10 +17,10 @@
                 <mat-error>Ingrese un correo electrónico valido</mat-error>
             </div>
             <mat-form-field>
-                <input matInput type="password" placeholder="Contraseña" name="password" required
-                    formControlName="password">
+                <input matInput type="password" placeholder="Contraseña" name="contrasena" required
+                    formControlName="contrasena">
             </mat-form-field>
-            <div *ngIf="(signInFormControl.password.touched || submitted) && signInFormControl.password.errors?.required"
+            <div *ngIf="(signInFormControl.contrasena.touched || submitted) && signInFormControl.contrasena.errors?.required"
                 class="error">
                 <mat-error>La contraseña es requerida</mat-error>
             </div>

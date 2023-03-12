@@ -6,47 +6,31 @@ import { SignUpRequest } from './requests/sign-up.request';
 
 import * as Swal from 'sweetalert2';
 import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
+import { SignInResponse } from './responses/sign-in.response';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthenticationService {
 
-  constructor(private userService: UsersService, private router: Router) { }
+  constructor(private userService: UsersService, private router: Router, private http: HttpClient) { }
 
   public authenticationKey: string = "authenticatedUser";
 
-  signIn(signInRequest: SignInRequest): void {
-    let user: User | undefined = this.userService.getUserByEmail(signInRequest.email);
-    if (user === undefined) {
-      Swal.default.fire(
-        'Error',
-        'El correo o la contraseña son incorrectos',
-        'error'
-      );
-      return;
-    }
+  private baseUrl: string = 'http://localhost:5000/api/authentication';
 
-    if (user.password !== signInRequest.password) {
-      Swal.default.fire(
-        'Error',
-        'El correo o la contraseña son incorrectos',
-        'error'
-      );
-      return;
-    }
+  signIn(signInRequest: SignInRequest) {
+    return this.http.post(`${this.baseUrl}/login`, signInRequest);
+  }
 
-    console.log("Ingreso exitoso");
-
+  saveUserInLocalStorage(data: SignInResponse) {
     let payload: Payload = {
-      id: user.id!,
-      email: user.email,
-      rol: user.rol
+      id: data.userID,
+      email: data.userEmail,
+      rol: data.userRole
     }
-
     localStorage.setItem(this.authenticationKey, JSON.stringify(payload));
-
-    this.router.navigate(["/"]);
   }
 
   signUp(signUpRequest: SignUpRequest): void {
@@ -92,7 +76,7 @@ export class AuthenticationService {
 
     let user: Payload = JSON.parse(localStorage.getItem(this.authenticationKey)!);
 
-    return user.rol === "Administrator";
+    return user.rol === "ADMIN";
   }
 
   userIsClient(): boolean {
@@ -102,7 +86,7 @@ export class AuthenticationService {
 
     let user: Payload = JSON.parse(localStorage.getItem(this.authenticationKey)!);
 
-    return user.rol === "Client";
+    return user.rol === "USER";
   }
 
   userIsLogged(): boolean {
