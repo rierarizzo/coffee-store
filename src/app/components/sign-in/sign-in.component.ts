@@ -11,7 +11,7 @@ import { SignInRequest } from "../../services/authentication/requests/sign-in.re
 
 import * as Swal from "sweetalert2";
 import { Router } from "@angular/router";
-import { SignInResponse } from "src/app/services/authentication/responses/sign-in.response";
+import { AuthResponse } from "src/app/services/authentication/responses/auth.response";
 
 @Component({
   selector: 'app-sign-in',
@@ -43,34 +43,33 @@ export class SignInComponent implements OnInit {
 		if (this.signInForm.valid) {
 			let signInRequest: SignInRequest = this.signInForm.value;
 
-			this.authenticationService.signIn(signInRequest).subscribe(
-				(data) => {
-					console.log(data);
-          this.authenticationService.saveUserInLocalStorage(data as SignInResponse);
+			this.authenticationService.signIn(signInRequest).subscribe({
+				next: (v) => {
+					this.authenticationService.saveUserInLocalStorage(v as AuthResponse);
 					this.router.navigate(["/"]);
 				},
-				(err) => {
-					Swal.default.fire(
-						"Error",
-						"Los datos ingresados no son correctos",
-						"error",
-					);
+				error: (v) => {
+					if (v.status === 401) {
+						this.showError("Credenciales incorrectas");
+						return;
+					}
+					if (v.status === 404) {
+						this.showError("El usuario ingresado no existe");
+						return;
+					}
+					this.showError("Ha ocurrido un error inesperado");
 				},
-			);
+			});
 		} else {
-			Swal.default.fire(
-				"Error",
-				"Los datos ingresados no son correctos",
-				"error",
-			);
+			this.showError("Los datos ingresados no son correctos");
 		}
 	}
 
 	get signInFormControl() {
 		return this.signInForm.controls;
 	}
-}
-function saveUserInLocalStorage(data: Object) {
-  throw new Error("Function not implemented.");
-}
 
+	private showError(msg: string) {
+		Swal.default.fire("Error", msg, "error");
+	}
+}

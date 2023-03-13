@@ -4,69 +4,42 @@ import { UsersService } from '../users/users.service';
 import { SignInRequest } from './requests/sign-in.request';
 import { SignUpRequest } from './requests/sign-up.request';
 
-import * as Swal from 'sweetalert2';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
-import { SignInResponse } from './responses/sign-in.response';
+import { AuthResponse } from './responses/auth.response';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthenticationService {
 
-  constructor(private userService: UsersService, private router: Router, private http: HttpClient) { }
-
   public authenticationKey: string = "authenticatedUser";
+  public tokenKey: string = "token";
 
   private baseUrl: string = 'http://localhost:5000/api/authentication';
+
+  constructor(private userService: UsersService, private http: HttpClient) { }
 
   signIn(signInRequest: SignInRequest) {
     return this.http.post(`${this.baseUrl}/login`, signInRequest);
   }
 
-  saveUserInLocalStorage(data: SignInResponse) {
+  signUp(signUpRequest: SignUpRequest) {
+    return this.http.post(`${this.baseUrl}/register`, signUpRequest);
+  }
+
+  signOut(): void {
+    localStorage.removeItem(this.authenticationKey);
+  }
+
+  saveUserInLocalStorage(data: AuthResponse) {
     let payload: Payload = {
       id: data.userID,
       email: data.userEmail,
       rol: data.userRole
     }
     localStorage.setItem(this.authenticationKey, JSON.stringify(payload));
-  }
-
-  signUp(signUpRequest: SignUpRequest): void {
-    let user: User = {
-      name: signUpRequest.name,
-      email: signUpRequest.email,
-      lastname: signUpRequest.surname,
-      password: signUpRequest.password,
-      rol: "Client"
-    };
-
-    try {
-      user = this.userService.createUser(user);
-    } catch (e) {
-      Swal.default.fire(
-        'Error',
-        'Ha ocurrido un error inesperado',
-        'error'
-      );
-      return;
-    }
-    
-    console.log("Ingreso exitoso");
-
-    let payload: Payload = {
-      id: user.id!,
-      email: user.email,
-      rol: user.rol
-    }
-
-    localStorage.setItem(this.authenticationKey, JSON.stringify(payload));
-    this.router.navigate(["/"]);
-  }
-
-  signOut(): void {
-    localStorage.removeItem(this.authenticationKey);
+    localStorage.setItem(this.tokenKey, JSON.stringify(data.accessToken));
   }
 
   userIsAdmin(): boolean {

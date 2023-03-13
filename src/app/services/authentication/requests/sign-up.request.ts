@@ -1,6 +1,6 @@
 export interface SignUpRequest {
-    name: string
-    surname: string
+    nombres: string
+    apellidos: string
     email: string
-    password: string
+    contrasena: string
 }

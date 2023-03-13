@@ -7,16 +7,16 @@
                 <h2>C U E N T A</h2>
             </div>
             <mat-form-field>
-                <input matInput placeholder="Nombre" name="name" formControlName="name" required>
+                <input matInput placeholder="Nombre" name="name" formControlName="nombres" required>
             </mat-form-field>
-            <div *ngIf="(signUpFormControl.name.touched || submitted) && signUpFormControl.name.errors?.required"
+            <div *ngIf="(signUpFormControl.nombres.touched || submitted) && signUpFormControl.nombres.errors?.required"
                 class="error">
                 <mat-error>El nombre es requerido</mat-error>
             </div>
             <mat-form-field>
-                <input matInput placeholder="Apellido" name="surname" formControlName="surname" required>
+                <input matInput placeholder="Apellido" name="surname" formControlName="apellidos" required>
             </mat-form-field>
-            <div *ngIf="(signUpFormControl.surname.touched || submitted) && signUpFormControl.surname.errors?.required"
+            <div *ngIf="(signUpFormControl.apellidos.touched || submitted) && signUpFormControl.apellidos.errors?.required"
                 class="error">
                 <mat-error>El apellido es requerido</mat-error>
             </div>
@@ -31,10 +31,10 @@
                 <mat-error>Ingrese un correo electrónico valido</mat-error>
             </div>
             <mat-form-field>
-                <input matInput type="password" placeholder="Contraseña" name="password" formControlName="password"
+                <input matInput type="password" placeholder="Contraseña" name="password" formControlName="contrasena"
                     required>
             </mat-form-field>
-            <div *ngIf="(signUpFormControl.password.touched || submitted) && signUpFormControl.password.errors?.required"
+            <div *ngIf="(signUpFormControl.contrasena.touched || submitted) && signUpFormControl.contrasena.errors?.required"
                 class="error">
                 <mat-error>La contraseña es requerida</mat-error>
             </div>
