@@ -47,7 +47,7 @@ export class UsersService {
       rol: 'Client'
     }
   ];
-
+//comentario de prueba
   isAdmin(user: User): boolean {
     return user.rol.charAt(0) == 'A';
   }
