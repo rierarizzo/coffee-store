@@ -10,6 +10,9 @@ import { ProductConfirmationComponent } from '../product-confirmation/product-co
 })
 export class DeleteProductsComponent {
   icon_gif: string = "../../../../assets/icons-gif/bin.gif";
+  nombre = this.data.Product.Nombre;
+  Id = this.data.Product.Id;
+
   constructor(private router: Router, 
   @Inject(MAT_DIALOG_DATA) public data: any, 
   private dialogRef: MatDialogRef<DeleteProductsComponent>,
@@ -19,9 +22,12 @@ export class DeleteProductsComponent {
 
   onSubmit() {
     this.dialogRef.close();
-    this.productsService.deleteProduct(this.data.Product);
-    this.openConfirmation('Eliminación de Producto');
-    this.redirecTo('/adm-productos/view');
+    this.productsService.deleteProduct(this.Id).subscribe((data:any)=>{
+      this.openConfirmation('Eliminación de Producto');
+      this.redirecTo('/adm-productos/view');
+    },
+    (errorData)=> alert("Error al eliminar Proveedor"+ errorData)
+    );
   }
   openConfirmation(text: string) {
     this.dialog.open(ProductConfirmationComponent, {
