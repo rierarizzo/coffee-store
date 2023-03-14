@@ -45,7 +45,7 @@ export class HeaderComponent {
         Categoria: 'Bebidas Calientes',
         Estado: 'Disponible',
         Descripcion: 'Capuchino de galletas oreo y preparado con café 100% puro soluble nescafé clásico y leche evaporada ',
-        Imagen: ''
+        ImagenUrl: ''
       },
       {
         Codigo: 'BC02',
@@ -54,7 +54,7 @@ export class HeaderComponent {
         Categoria: 'Bebidas Calientes',
         Estado: 'Disponible',
         Descripcion: 'Preparado con café 100% puro soluble nescafé clásico y leche evaporada ',
-        Imagen: ''
+        ImagenUrl: ''
       }
     ]
 

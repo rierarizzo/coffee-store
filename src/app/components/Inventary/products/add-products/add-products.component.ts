@@ -51,7 +51,7 @@ export class AddProductsComponent implements OnInit {
       Categoria: this.formAdd.value.Categoria,
       Estado: this.formAdd.value.Estado,
       Descripcion: this.formAdd.value.Descripcion,
-      Imagen: this.formAdd.value.Imagen
+      ImagenUrl: this.formAdd.value.Imagen
     }
     this._snackBar.open('El Producto fue agregado con éxito', '', {
       duration: 1500,

@@ -11,10 +11,11 @@ export class MainPageComponent {
 
   defaultImagePath: string = "../../../assets/default-image.png";
 
-  allProducts: Product[];
+  allProducts: Product[] = [];
 
   constructor(private productService: ProductsService) {
-    this.allProducts = productService.ProductData;
+    this.productService.getDatos()
+      .subscribe(products => this.allProducts = products);
   }
 
   addToCart(product: Product) {

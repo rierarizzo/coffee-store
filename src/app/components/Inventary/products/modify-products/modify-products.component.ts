@@ -52,7 +52,7 @@ export class ModifyProductsComponent{
         Categoria: this.formModify.value.Categoria,
         Estado: this.formModify.value.Estado,
         Descripcion: this.formModify.value.Descripcion,
-        Imagen: ""
+        ImagenUrl: ""
       }
 
       this._snackBar.open('El Producto '+this.data.Product.Codigo+ ' fue modificado con éxito','',{
