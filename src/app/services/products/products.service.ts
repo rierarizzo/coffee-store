@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { Product } from "src/app/entities/products";
 import { HttpClient } from "@angular/common/http";
-import { environment } from "src/enviorenments/enviorenment";
+import { environment } from "src/environment/environment";
 import { mergeMap, of, Subject } from "rxjs";
 
 @Injectable({
@@ -24,14 +24,14 @@ export class ProductsService {
 		return this.http.get(`${this.baseUrl}getall`).pipe(
 			mergeMap((response) => {
 				return of(response as Product[]);
-			})
+			}),
 		);
 	}
 
 	AddProduct(addproduct: Product) {
 		this.ProductData.unshift(addproduct);
 	}
-  
+
 	modifyProduct(productNew: Product, productOld: Product) {
 		this.ProductData[this.ProductData.indexOf(productOld)] = productNew;
 	}

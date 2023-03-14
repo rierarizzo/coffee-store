@@ -5,6 +5,7 @@ import { SignUpRequest } from "./requests/sign-up.request";
 
 import { HttpClient } from "@angular/common/http";
 import { AuthResponse } from "./responses/auth.response";
+import { environment } from "src/environment/environment";
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,7 @@ export class AuthenticationService {
 	public authenticationKey: string = "authenticatedUser";
 	public tokenKey: string = "token";
 
-	private baseUrl: string = "http://localhost:5000/api/authentication";
+	private baseUrl: string = `${environment.endpoint}api/authentication`;
 
 	constructor(private http: HttpClient) {}
 

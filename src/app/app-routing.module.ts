@@ -17,6 +17,7 @@ import { ClientsViewComponent } from "./components/clients/clients-view/clients-
 
 /* Guards */
 import { AuthGuard } from "./guards/auth/auth.guard";
+import { RoleGuard } from "./guards/role/role.guard";
 
 const routes: Routes = [
 	{ path: "", component: MainPageComponent },
@@ -24,16 +25,48 @@ const routes: Routes = [
 	{ path: "login", component: SignInComponent },
 	{ path: "register", component: SignUpComponent },
 	/* Rutas usuario ADM */
-	{ path: "adm-panel", component: AdmPanelComponent },
-	{ path: "adm-users", component: UsersListComponent },
+	{
+		path: "adm-panel",
+		component: AdmPanelComponent,
+		canActivate: [AuthGuard, RoleGuard],
+	},
+	{
+		path: "adm-users",
+		component: UsersListComponent,
+		canActivate: [AuthGuard, RoleGuard],
+	},
 	/* Rutas Producto */
-	{ path: "adm-productos/add", component: AddProductsComponent },
-	{ path: "adm-productos/view", component: ProductsViewComponent },
-	{ path: "adm-productos/modify", component: ModifyProductsComponent },
+	{
+		path: "adm-productos/add",
+		component: AddProductsComponent,
+		canActivate: [AuthGuard, RoleGuard],
+	},
+	{
+		path: "adm-productos/view",
+		component: ProductsViewComponent,
+		canActivate: [AuthGuard, RoleGuard],
+	},
+	{
+		path: "adm-productos/modify",
+		component: ModifyProductsComponent,
+		canActivate: [AuthGuard, RoleGuard],
+	},
 	/* Rutas Cliente */
-	{ path: "view-user", component: ClientsViewComponent },
-	{ path: "account", component: ClientsOptionsComponent },
-	{ path: "edit-user", component: ClientsModifyComponent },
+	{
+		path: "view-user",
+		component: ClientsViewComponent,
+		canActivate: [AuthGuard],
+	},
+	{
+		path: "account",
+		component: ClientsOptionsComponent,
+		canActivate: [AuthGuard],
+	},
+	{
+		path: "edit-user",
+		component: ClientsModifyComponent,
+		canActivate: [AuthGuard],
+	},
 	/* Rutas  Carrito */
 	{
 		path: "carshop",
