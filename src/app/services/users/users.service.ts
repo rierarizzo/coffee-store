@@ -1,53 +1,72 @@
 import { Injectable } from '@angular/core';
 import { User } from 'src/app/entities/users';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { environment } from 'src/environment/environment';
+import { Observable, Subject } from 'rxjs';
+import { tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 
 export class UsersService {
-
-  constructor() { }
+  public shoppingCartKey: string = "shoppingCart";
+  baseUrl: string = environment.endpoint + 'api/Usuario/';
+  base: string = environment.endpoint + 'api/Rolusuario/';
+  private _refresh$ = new Subject<void>();
+  constructor(private http: HttpClient) { }
+  get refresh$() {
+    return this._refresh$;
+  }
 
   dummyData: User[] = [
-    {
-      id: 1,
-      idUser: '000000000',
-      name: 'Keneth Danilo',
-      lastname: 'Mero Minchala',
-      email: 'admin@gmail.com',
-      password: 'admin123',
-      rol: 'ADMIN'
-    },
-    {
-      id: 2,
-      idUser: '0151245245',
-      name: 'Andrés Luis',
-      lastname: 'Carvajal Lozano',
-      email: 'andresito@gmail.com',
-      password: 'pepitotrulo',
-      rol: 'USER'
-    },
-    {
-      id: 3,
-      idUser: '0954658913',
-      name: 'Jorge Luis',
-      lastname: 'Charco Aguirre',
-      email: 'jorgito@gmail.com',
-      password: 'pepitotrulo',
-      rol: 'USER'
-    },
-    {
-      id: 4,
-      idUser: '0957962158',
-      name: 'Andrea Lisbeth',
-      lastname: 'Romero Haro',
-      email: 'andrea@gmail.com',
-      password: 'pepitotrulo',
-      rol: 'USER'
-    }
-  ];
-//comentario de prueba
+    /* {
+       id: 1,
+       idUser: '000000000',
+       name: 'Keneth Danilo',
+       lastname: 'Mero Minchala',
+       email: 'admin@gmail.com',
+       password: 'admin123',
+       rol: 'ADMIN'
+     },
+     {
+       id: 2,
+       idUser: '0151245245',
+       name: 'Andrés Luis',
+       lastname: 'Carvajal Lozano',
+       email: 'andresito@gmail.com',
+       password: 'pepitotrulo',
+       rol: 'USER'
+     },
+     {
+       id: 3,
+       idUser: '0954658913',
+       name: 'Jorge Luis',
+       lastname: 'Charco Aguirre',
+       email: 'jorgito@gmail.com',
+       password: 'pepitotrulo',
+       rol: 'USER'
+     },
+     {
+       id: 4,
+       idUser: '0957962158',
+       name: 'Andrea Lisbeth',
+       lastname: 'Romero Haro',
+       email: 'andrea@gmail.com',
+       password: 'pepitotrulo',
+       rol: 'USER'
+     }*/
+  ]
+  //comentario de prueba
+
+  getDatos() {
+    return this.http.get(this.baseUrl);
+  }
+
+  GetRol() {
+    return this.http.get(this.base);
+  }
+
   isAdmin(user: User): boolean {
     return user.rol.charAt(0) === 'A';
   }
@@ -64,7 +83,7 @@ export class UsersService {
     return this.dummyData;
   }
 
-  getUser(user: User): User | null{
+  getUser(user: User): User | null {
     this.dummyData.find((obj) => {
       return obj.email === user.email && obj.password === user.password ? obj : undefined
     });
@@ -72,12 +91,12 @@ export class UsersService {
     return user;
   }
 
-  generateIdUser(user:User):User{
-    if(this.dummyData.indexOf(user) === -1) {
+  generateIdUser(user: User): User {
+    if (this.dummyData.indexOf(user) === -1) {
       user.id = 1;
       return user;
-    }else{
-      user.id = this.dummyData.indexOf(this.dummyData[this.dummyData.length-1]) + 1
+    } else {
+      user.id = this.dummyData.indexOf(this.dummyData[this.dummyData.length - 1]) + 1
       return user;
     }
   }
