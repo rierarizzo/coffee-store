@@ -10,6 +10,7 @@ import {
 import { catchError, mergeMap, Observable, of } from "rxjs";
 import { AuthenticationService } from "src/app/services/authentication/authentication.service";
 import { AuthResponse } from "src/app/services/authentication/responses/auth.response";
+import { environment } from "src/environment/environment";
 
 import * as Swal from "sweetalert2";
 
@@ -17,7 +18,7 @@ import * as Swal from "sweetalert2";
   providedIn: 'root'
 })
 export class AuthGuard implements CanActivate {
-	private baseUrl: string = "http://localhost:5000/api/authentication";
+	private baseUrl: string = `${environment.endpoint}api/authentication`;
 	public tokenKey: string = "token";
 
 	private isAuthenticated: boolean = false;
