@@ -50,7 +50,7 @@ export class SignUpComponent implements OnInit {
 					this.router.navigate(["/"]);
 				},
 				error: (v) => {
-          console.log(v);
+					console.log(v);
 					if (v.status === 401) {
 						this.showError("Credenciales incorrectas");
 						return;

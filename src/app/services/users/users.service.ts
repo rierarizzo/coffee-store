@@ -17,7 +17,7 @@ export class UsersService {
       lastname: 'Mero Minchala',
       email: 'admin@gmail.com',
       password: 'admin123',
-      rol: 'Administrator'
+      rol: 'ADMIN'
     },
     {
       id: 2,
@@ -26,7 +26,7 @@ export class UsersService {
       lastname: 'Carvajal Lozano',
       email: 'andresito@gmail.com',
       password: 'pepitotrulo',
-      rol: 'Client'
+      rol: 'USER'
     },
     {
       id: 3,
@@ -35,7 +35,7 @@ export class UsersService {
       lastname: 'Charco Aguirre',
       email: 'jorgito@gmail.com',
       password: 'pepitotrulo',
-      rol: 'Client'
+      rol: 'USER'
     },
     {
       id: 4,
@@ -44,12 +44,12 @@ export class UsersService {
       lastname: 'Romero Haro',
       email: 'andrea@gmail.com',
       password: 'pepitotrulo',
-      rol: 'Client'
+      rol: 'USER'
     }
   ];
 
   isAdmin(user: User): boolean {
-    return user.rol.charAt(0) == 'A';
+    return user.rol.charAt(0) === 'A';
   }
 
   createUser(user: User): User {
@@ -66,14 +66,14 @@ export class UsersService {
 
   getUser(user: User): User | null{
     this.dummyData.find((obj) => {
-      return obj.email == user.email && obj.password == user.password ? obj : undefined
+      return obj.email === user.email && obj.password === user.password ? obj : undefined
     });
     /* return this.dummyData[this.dummyData.indexOf(user)]; */
     return user;
   }
 
   generateIdUser(user:User):User{
-    if(this.dummyData.indexOf(user) == -1) {
+    if(this.dummyData.indexOf(user) === -1) {
       user.id = 1;
       return user;
     }else{
@@ -104,10 +104,10 @@ export class UsersService {
 
   filterUsersRol(value: string): User[] {
     return this.dummyData.filter((obj) => {
-      if (value == 'All') {
+      if (value === 'All') {
         return this.dummyData
       } else {
-        return obj.rol == value
+        return obj.rol === value
       }
     });
   }

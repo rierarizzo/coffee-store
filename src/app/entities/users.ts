@@ -5,5 +5,5 @@ export interface User{
     lastname:string;
     email:string;
     password:string;
-    rol:'Client'|'Administrator';
+    rol:'USER'|'ADMIN';
 }
