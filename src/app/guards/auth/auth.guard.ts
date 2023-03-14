@@ -7,9 +7,11 @@ import {
 	RouterStateSnapshot,
 	UrlTree,
 } from "@angular/router";
-import { Observable } from "rxjs";
+import { catchError, mergeMap, Observable, of } from "rxjs";
 import { AuthenticationService } from "src/app/services/authentication/authentication.service";
 import { AuthResponse } from "src/app/services/authentication/responses/auth.response";
+
+import * as Swal from "sweetalert2";
 
 @Injectable({
   providedIn: 'root'
@@ -39,22 +41,32 @@ export class AuthGuard implements CanActivate {
 
 		// En caso de que siga autenticado, refresca el token y permite el acceso,
 		// caso contrario, redirige a la pantalla de login
-		this.http
+		return this.http
 			.post(`${this.baseUrl}/refresh-token`, "", {
 				headers: new HttpHeaders().set("Authorization", tokenWithBearer),
 			})
-			.subscribe({
-				next: (v) => {
-					this.authenticationService.saveUserInLocalStorage(v as AuthResponse);
+			.pipe(
+				mergeMap((response) => {
+					this.authenticationService.saveUserInLocalStorage(
+						response as AuthResponse,
+					);
 					this.isAuthenticated = true;
-				},
-				error: () => {
+					console.log(`Está autenticado? -> ${this.isAuthenticated}`);
+					return of(this.isAuthenticated);
+				}),
+				catchError((error) => {
+					console.error(error);
 					this.authenticationService.signOut();
 					this.router.navigate(["/"]);
-				},
-			});
-
-		console.log(`Está autenticado? -> ${this.isAuthenticated}`);
-		return this.isAuthenticated;
+					Swal.default.fire({
+						position: "top-end",
+						icon: "error",
+						title: "Tu sesión ha caducado",
+						showConfirmButton: false,
+						timer: 1500,
+					});
+					return of(false);
+				}),
+			);
 	}
 }
