@@ -39,7 +39,7 @@ export class HeaderComponent {
     let user: User = this.authService.getUserFromLocalStorage()!;
     let products: Product[] = [
       {
-        Codigo: 'BC01',
+        Id: 'BC01',
         Nombre: ' CAPUCHINO OREO ',
         Precio: 4.50,
         Categoria: 'Bebidas Calientes',
@@ -48,7 +48,7 @@ export class HeaderComponent {
         ImagenUrl: ''
       },
       {
-        Codigo: 'BC02',
+        Id: 'BC02',
         Nombre: ' Expreso Doble ',
         Precio: 5.50,
         Categoria: 'Bebidas Calientes',

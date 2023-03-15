@@ -52,7 +52,7 @@ export class ModifyProductsComponent {
   onSubmit() {
 
     const producto: Product = {
-      Codigo: this.data.Product.Id,
+      Id: this.data.Product.Id,
       Nombre: this.formModify.value.Nombre,
       Precio: this.formModify.value.Precio,
       Categoria: this.formModify.value.Categoria,

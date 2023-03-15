@@ -14,7 +14,9 @@ export class ProductsService {
 	private _refresh$ = new Subject<void>();
 	ProductData: Product[] = [];
 
-	constructor(private http: HttpClient) {}
+	constructor(private http: HttpClient) {
+		this.getDatos().subscribe((products) => (this.ProductData = products));
+	}
 
 	get refresh$() {
 		return this._refresh$;
@@ -23,6 +25,7 @@ export class ProductsService {
 	getDatos() {
 		return this.http.get(`${this.baseUrl}getall`).pipe(
 			mergeMap((response) => {
+				console.log(response);
 				return of(response as Product[]);
 			}),
 		);
@@ -30,26 +33,24 @@ export class ProductsService {
 
 	AddProduct(addproduct: Product) {
 		/* this.ProductData.unshift(addproduct); */
-		console.log(addproduct)
-		return this.http.post(`${this.baseUrl}GetProductoInsertar/`,addproduct);
+		console.log(addproduct);
+		return this.http.post(`${this.baseUrl}GetProductoInsertar/`, addproduct);
 	}
 
 	/* modifyProduct(productNew: Product, productOld: Product) {
 		this.ProductData[this.ProductData.indexOf(productOld)] = productNew;
 	} */
 
-	modifyProduct(producto : Product) {
-		console.log(producto)
-		return this.http.post(`${this.baseUrl}GetProductoModificar/`,producto);
+	modifyProduct(producto: Product) {
+		console.log(producto);
+		return this.http.post(`${this.baseUrl}GetProductoModificar/`, producto);
 	}
 
 	Modificar(data: Product) {
-		let Codigo = this.ProductData.find(
-			(producto) => producto.Codigo === data.Codigo,
-		);
-		if (data.Codigo === Codigo?.Codigo) {
+		let Codigo = this.ProductData.find((producto) => producto.Id === data.Id);
+		if (data.Id === Codigo?.Id) {
 			let index = this.ProductData.findIndex(
-				(producto) => producto.Codigo === data.Codigo,
+				(producto) => producto.Id === data.Id,
 			);
 			this.ProductData[index] = data;
 		}
@@ -74,7 +75,7 @@ export class ProductsService {
 
 	getProductByCode(code: string): Product | undefined {
 		return this.ProductData.find((product) => {
-			return product.Codigo === code;
+			return product.Id == code.trim();
 		});
 	}
 

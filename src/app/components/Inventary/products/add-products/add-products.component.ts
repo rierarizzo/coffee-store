@@ -43,7 +43,7 @@ export class AddProductsComponent implements OnInit {
 
   productAdd() {
     const conspro: Product = {
-      Codigo: this.formAdd.value.Codigo,
+      Id: this.formAdd.value.Codigo,
       Nombre: this.formAdd.value.Nombre,
       Precio: this.formAdd.value.Precio,
       Categoria: this.formAdd.value.Categoria,

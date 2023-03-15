@@ -19,7 +19,7 @@ export class MainPageComponent {
   }
 
   addToCart(product: Product) {
-    this.productService.saveProductInShoppingCart(product.Codigo);
+    this.productService.saveProductInShoppingCart(product.Id);
   }
 
 }

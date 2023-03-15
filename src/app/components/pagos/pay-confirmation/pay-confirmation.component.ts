@@ -49,7 +49,7 @@ export class PayConfirmationComponent implements OnInit {
 
   mapProductEntityToTablePresentation(product: Product): ProductDetailElement {
     let productElement: ProductDetailElement = {
-      code: product.Codigo,
+      code: product.Id,
       name: product.Nombre,
       price: product.Precio,
       canti: 1

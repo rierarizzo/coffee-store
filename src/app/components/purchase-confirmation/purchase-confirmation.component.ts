@@ -44,7 +44,7 @@ export class PurchaseConfirmationComponent implements OnInit {
 
   mapProductEntityToTablePresentation(product: Product): ProductElement {
     let productElement: ProductElement = {
-      code: product.Codigo,
+      code: product.Id,
       name: product.Nombre,
       description: product.Descripcion,
       price: product.Precio
