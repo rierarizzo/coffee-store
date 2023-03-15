@@ -63,6 +63,10 @@ export class UsersService {
     return this.http.get(this.baseUrl);
   }
 
+  getDatosId(id:any) {
+    return this.http.get(this.baseUrl+'getuser?id='+id);
+  }
+
   GetRol() {
     return this.http.get(this.base);
   }
@@ -101,12 +105,17 @@ export class UsersService {
     }
   }
 
-  modifyUser(userNew: User, userOld: User) {
+  /* modifyUser(userNew: User, userOld: User) {
     this.dummyData[this.dummyData.indexOf(userOld)] = userNew;
+  } */
+
+  modifyUser(user: User) {
+    return this.http.put(`${this.baseUrl}updatedata/`, user)
   }
 
-  deleteUser(user: User) {
-    this.dummyData.splice(this.dummyData.indexOf(user), 1)
+  deleteUser(id:any) {
+    /*this.dummyData.splice(this.dummyData.indexOf(user), 1)*/
+    return this.http.delete(`${this.baseUrl}deleteuser/${id}`, id);
   }
 
   getUserByEmail(email: string): User | undefined {

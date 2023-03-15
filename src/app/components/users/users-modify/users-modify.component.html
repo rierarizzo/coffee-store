@@ -19,16 +19,28 @@
             <input matInput placeholder="Correo Electrónico" formControlName="email">
         </mat-form-field>
 
-        <mat-form-field class="campos-field">
+        <!-- <mat-form-field class="campos-field">
             <input matInput placeholder="Contraseña" formControlName="password">
-        </mat-form-field>
+        </mat-form-field> -->
 
-        <mat-form-field appearance="fill">
+        <!-- <mat-form-field appearance="fill">
             <mat-label>Rol</mat-label>
             <select formControlName="rol" matNativeControl required>
                 <option value="Client">Cliente</option>
                 <option value="Administrator">Administrador</option>
             </select>
+        </mat-form-field> -->
+
+        <mat-form-field appearance="fill" class="campos-field">
+            <mat-label>Rol</mat-label>
+            <mat-select formControlName="rol" [formControl]="rolControl" required ngDefaultControl>
+                <mat-option>Seleccione un rol</mat-option>
+                <mat-option *ngFor="let Rol of roles" [value]="Rol.Codigo">
+                    {{Rol.Descripcion}}
+                </mat-option>
+            </mat-select>
+            <mat-error *ngIf="rolControl.hasError('required')">Elija un rol</mat-error>
+            <mat-hint>{{rolControl.value?.Codigo}}</mat-hint>
         </mat-form-field>
 
         <div class="button-struct">

@@ -5,6 +5,8 @@ import { User } from 'src/app/entities/users';
 import { ClientsConfirmationComponent } from '../clients-confirmation/clients-confirmation.component';
 import { UsersService } from 'src/app/services/users/users.service';
 import { AuthenticationService } from 'src/app/services/authentication/authentication.service';
+import { ClientsViewComponent } from '../clients-view/clients-view.component';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-clients-modify',
@@ -15,17 +17,34 @@ export class ClientsModifyComponent {
   icon_gif: string = "../../../../assets/icons-gif/update.gif";
   userOld: any;
   userNew: any;
-
-  constructor(private dialog: MatDialog, private userService: UsersService, private authService: AuthenticationService) {
+  suscription!: Subscription;
+  rol!:string;
+  constructor(private dialog: MatDialog, private _userService: UsersService, private authService: AuthenticationService) {
     this.userOld = this.authService.getUserFromLocalStorage();
-    if (this.userOld != null) {
-      this.formModify.setValue({
-        idUser: this.userOld.idUser,
-        name: this.userOld.name,
-        lastname: this.userOld.lastname,
-        email: this.userOld.email
-      });
+  }
+
+  ngOnInit(): void {
+    this.obtenerdatos();
+    this.suscription = this._userService.refresh$.subscribe(() => {
+      this.obtenerdatos();
     }
+    );
+  }
+  ngOnDestroy(): void {
+    this.suscription.unsubscribe();
+  }
+
+  obtenerdatos(): void {
+    this._userService.getDatosId(this.userOld.id).subscribe((data: any) => {
+      this.formModify.setValue({
+        idUser: data[0]['Cedula'],
+        name: data[0]['Nombres'],
+        lastname: data[0]['Apellidos'],
+        email: data[0]['Email']
+      });
+      this.rol = this.userOld.rol;
+      this.userOld = data;
+    });
   }
 
   formModify = new FormGroup({
@@ -37,13 +56,15 @@ export class ClientsModifyComponent {
 
   openDialogConfirmation() {
     this.userNew = {
-      idUser: this.formModify.value.idUser,
-      name: this.formModify.value.name,
-      lastname: this.formModify.value.lastname,
-      email: this.formModify.value.email,
-      password: this.userOld.password,
-      rol: this.userOld.password
+      Id : this.userOld[0]['Id'],
+      Cedula: this.formModify.value.idUser,
+      Nombres: this.formModify.value.name,
+      Apellidos: this.formModify.value.lastname,
+      Email: this.formModify.value.email,
+      /* password: this.userOld.password, */
+      Rol: this.rol,
     };
+    this.userOld = this.userNew;
     this.openConfirmation('Actualización de Perfil');
   }
 

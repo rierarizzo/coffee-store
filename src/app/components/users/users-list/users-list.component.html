@@ -1,16 +1,23 @@
 <div class="flex-component">
     <div class="title-container title-content">
-        Listado de Usuarios registrados en la Cafetería Virtual
+        Listado de Usuarios
     </div>
     <div>
-        Filtro de búsqueda
-        <select [ngModel]="selectedItem" (ngModelChange)="onChangeObj($event)" class="comboBox">
-            <option selected value="All">Todos</option>
-            <option value="Client">Cliente</option>
-            <option value="Administrator">Administrador</option>
-        </select>
+        Filtro de Búsqueda por Rol
+        <mat-form-field appearance="fill" class="campos-field">
+            <mat-label>Rol</mat-label>
+            <mat-select [formControl]="rolControl" [ngModel]="selectedItem" (ngModelChange)="onChangeObj($event)">
+                <mat-option>Todos</mat-option>
+                <mat-option *ngFor="let r of roles" [value]="r.Descripcion">
+                    {{r.Descripcion}}
+                </mat-option>
+            </mat-select>
+            <!-- 
+            <mat-error *ngIf="categoryControl.hasError('required')">Elija una categoria</mat-error>
+            <mat-hint>{{categoryControl.value?.Codigo}}</mat-hint> -->
+        </mat-form-field>
     </div>
-    <div class="table-settings">
+    <div class="table-responsive">
         <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
             <ng-container matColumnDef="id">
                 <th mat-header-cell *matHeaderCellDef> Id </th>
@@ -40,12 +47,12 @@
             <ng-container matColumnDef="rol">
                 <th mat-header-cell *matHeaderCellDef> Rol </th>
                 <td mat-cell *matCellDef="let element">
-                    <div *ngIf="element.rol=='Administrator' ; else conditionRol">
-                        <label class="label-rol-admin"> {{element.Rol}} </label>
+                    <div *ngIf="element.Descripcion=='Administrador' ; else conditionRol">
+                        <label class="label-rol-admin"> {{element.Descripcion}} </label>
                     </div>
                     <ng-template #conditionRol>
                         <div>
-                            <label class="label-rol-client"> {{element.Rol}} </label>
+                            <label class="label-rol-client"> {{element.Descripcion}} </label>
                         </div>
                     </ng-template>
                 </td>

@@ -10,33 +10,36 @@ import { ClientsMessageComponent } from '../clients-message/clients-message.comp
   styleUrls: ['./clients-confirmation.component.css']
 })
 export class ClientsConfirmationComponent {
-  rutaGif:string="";
-  text:string="";
+  rutaGif: string = "";
+  text: string = "";
 
-  constructor(@Inject(MAT_DIALOG_DATA) private data:any,
-  private dialogRef:MatDialogRef<ClientsConfirmationComponent>,
-  private dialog:MatDialog,
-  private userService:UsersService){
+  constructor(@Inject(MAT_DIALOG_DATA) private data: any,
+    private dialogRef: MatDialogRef<ClientsConfirmationComponent>,
+    private dialog: MatDialog,
+    private _userService: UsersService) {
     this.rutaGif = this.data.rutaGif;
   }
 
-  onSubmit(){
+  onSubmit() {
     this.dialogRef.close();
-    this.userService.modifyUser(this.data.clientNew as User, this.data.clientOld as User);
-    this.openMessage(this.data.text);
+    this._userService.modifyUser(this.data.clientOld).subscribe((data: any) => {
+      this.openMessage(this.data.text);
+    },
+      (errorData) => alert("Error al Actualizar Usuario" + errorData)
+    );
   }
 
-  openMessage(text:string){
-    this.dialog.open(ClientsMessageComponent,{
+  openMessage(text: string) {
+    this.dialog.open(ClientsMessageComponent, {
       width: '35%',
-      data:{
+      data: {
         rutaGif: this.rutaGif,
-        text:text
+        text: text
       }
     });
   }
 
-  cancel(){
+  cancel() {
     this.dialogRef.close();
   }
 }

@@ -14,6 +14,8 @@ import { UsersConfirmationComponent } from '../users-confirmation/users-confirma
 export class UsersDeleteComponent {
 
   icon_gif: string = "../../../../assets/icons-gif/bin.gif";
+  nombre = this.data.user.Nombre;
+  Id = this.data.user.Id;
 
   constructor(private router: Router,
     private dialog: MatDialog,
@@ -25,9 +27,12 @@ export class UsersDeleteComponent {
 
   onSubmit() {
     this.dialogRef.close();
-    this.userService.deleteUser(this.data.user);
-    this.openConfirmation('Eliminación de Usuario');
-    this.redirecTo('/adm-users');
+    this.userService.deleteUser(this.Id).subscribe((data:any)=>{
+      this.openConfirmation('Eliminación de Usuario');
+      this.redirecTo('/adm-users');
+    },
+    (errorData)=> alert("Error al eliminar Proveedor"+ errorData)
+    );    
   }
 
   openConfirmation(text: string) {
