@@ -3,9 +3,6 @@
         <mat-card-title class="form-title-style">Agregar Producto</mat-card-title>
     </div>
     <form [formGroup]="formAdd" class="form-struct">
-        <mat-form-field class="campos-field">
-            <input matInput placeholder="Codigo" formControlName="Codigo">
-        </mat-form-field>
 
         <mat-form-field class="campos-field">
             <input matInput placeholder="Nombre" formControlName="Nombre">
@@ -16,14 +13,14 @@
         </mat-form-field>
 
         <mat-form-field appearance="fill" class="campos-field">
-            <mat-label>Categoria</mat-label>
-            <mat-select [formControl]="categoryControl" required>
-                <mat-option>Seleccione una categoria</mat-option>
-                <mat-option *ngFor="let Categoria of categorias" [value]="Categoria.Codigo">
-                    {{Categoria.Descripcion}}
+            <mat-label>Categoría</mat-label>
+            <mat-select formControlName="Categoria" [formControl]="categoryControl" required ngDefaultControl>
+                <mat-option>Seleccione una categoría</mat-option>
+                <mat-option *ngFor="let cat of categorias" [value]="cat.Codigo">
+                    {{cat.Descripcion}}
                 </mat-option>
             </mat-select>
-            <mat-error *ngIf="categoryControl.hasError('required')">Elija una categoria</mat-error>
+            <mat-error *ngIf="categoryControl.hasError('required')">Elija un rol</mat-error>
             <mat-hint>{{categoryControl.value?.Codigo}}</mat-hint>
         </mat-form-field>
 
@@ -32,7 +29,7 @@
         </mat-form-field>
 
         <mat-form-field class="campos-field">
-            <input matInput placeholder="Imagen" formControlName="Imagen">
+            <input matInput placeholder="URL de Imagen" formControlName="Imagen">
         </mat-form-field>
         
         <div class="button-struct">

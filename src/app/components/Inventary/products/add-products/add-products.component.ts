@@ -22,24 +22,22 @@ export class AddProductsComponent implements OnInit {
   categorias: any;
 
   constructor(private router: Router, @Inject(MAT_DIALOG_DATA) public data: any,
-    private dialogRef: MatDialogRef<AddProductsComponent>, private productsService: ProductsService,
+    private dialogRef: MatDialogRef<AddProductsComponent>, private _productsService: ProductsService,
     private formBuilder: FormBuilder, private dialog: MatDialog, private _snackBar: MatSnackBar) {
 
   }
   ngOnInit(): void {
     this.formAdd = this.formBuilder.group({
-      Codigo: ['', Validators.required],
+      //Codigo: ['', Validators.required],
       Nombre: ['', Validators.required],
       Precio: ['', Validators.required],
       Categoria: ['', Validators.required],
-      Estado: ['', Validators.required],
+      //Estado: ['', Validators.required],
       Descripcion: ['', Validators.required],
       Imagen: ['', Validators.required]
     }),
-      this.productsService.GetCategory().subscribe((data: any) => {
+      this._productsService.GetCategory().subscribe((data: any) => {
         this.categorias = data;
-        console.log(this.categorias)
-        console.log(data);
       });
   }
 
@@ -53,20 +51,23 @@ export class AddProductsComponent implements OnInit {
       Descripcion: this.formAdd.value.Descripcion,
       ImagenUrl: this.formAdd.value.Imagen
     }
-    this._snackBar.open('El Producto fue agregado con éxito', '', {
-      duration: 1500,
-      horizontalPosition: 'start',
-      verticalPosition: 'bottom',
-    })
 
-    this.router.navigate(['/'])
-      .then(() => this.router.navigate(['/adm-productos/view'], { state: { editarDatos: this.productsService.AddProduct(conspro) } }))
+    this._productsService.AddProduct(conspro).subscribe((data: any) => {
+      this.dialogRef.close();
+      this._snackBar.open('El Producto fue agregado con éxito', '', {
+        duration: 1500,
+        horizontalPosition: 'start',
+        verticalPosition: 'bottom',
+      });
+      this.redirecTo('/adm-productos/view');
+    },
+      (errorData) => alert("Error al Insertar Usuario" + errorData)
+    );
+  }
 
-    let currentUrl = this.router.url;
-    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
-    this.router.onSameUrlNavigation = 'reload';
-    this.router.navigate([currentUrl]);
-    this.dialogRef.close();
+  redirecTo(uri: string) {
+    this.router.navigateByUrl('/', { skipLocationChange: true }).then(() =>
+      this.router.navigate([uri]));
   }
 
   cancel() {

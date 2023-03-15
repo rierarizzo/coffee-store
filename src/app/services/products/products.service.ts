@@ -29,11 +29,18 @@ export class ProductsService {
 	}
 
 	AddProduct(addproduct: Product) {
-		this.ProductData.unshift(addproduct);
+		/* this.ProductData.unshift(addproduct); */
+		console.log(addproduct)
+		return this.http.post(`${this.baseUrl}GetProductoInsertar/`,addproduct);
 	}
 
-	modifyProduct(productNew: Product, productOld: Product) {
+	/* modifyProduct(productNew: Product, productOld: Product) {
 		this.ProductData[this.ProductData.indexOf(productOld)] = productNew;
+	} */
+
+	modifyProduct(producto : Product) {
+		console.log(producto)
+		return this.http.post(`${this.baseUrl}GetProductoModificar/`,producto);
 	}
 
 	Modificar(data: Product) {

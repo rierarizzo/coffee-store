@@ -22,6 +22,7 @@ export class ProductsViewComponent implements OnInit{
 
   //Filtro de Busqueda
   filter: any;
+  categorias:any;
 
   //Datos
   dataSource!: MatTableDataSource<any>
@@ -31,16 +32,19 @@ export class ProductsViewComponent implements OnInit{
 
   displayedColumns: string[] = ['Codigo', 'Nombre', 'Precio', 'Categoria', 'Descripcion', 'Botones'];
 
-  constructor(private productsService: ProductsService, private dialog: MatDialog) {
+  constructor(private _productsService: ProductsService, private dialog: MatDialog) {
   };
    
   ngOnInit(): void {
     this.obtenerdatos(); 
-    this.suscription = this.productsService.refresh$.subscribe(()=> 
+    this.suscription = this._productsService.refresh$.subscribe(()=> 
       {
         this.obtenerdatos();
       }
     );
+    this._productsService.GetCategory().subscribe((data: any) => {
+      this.categorias = data;
+    });
   }
   
   ngOnDestroy(): void{
@@ -48,7 +52,7 @@ export class ProductsViewComponent implements OnInit{
   }
 
   obtenerdatos(): void{
-    this.productsService.getDatos().subscribe((data:any) => {
+    this._productsService.getDatos().subscribe((data:any) => {
       this.dataSource = new MatTableDataSource<any>(data as any[]);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
@@ -56,11 +60,13 @@ export class ProductsViewComponent implements OnInit{
   }
 
 
-  openProductModify(element: any) {
+  openProductModify(element: any) {    
+    let cat = this.obtenerCodigoCategoria(this.categorias, element.Categoria)
     this.dialog.open(ModifyProductsComponent, {
       width: '50%',
       data: {
-        Product: element
+        Product: element,
+        Categoria: cat
       }
     });
   }
@@ -84,8 +90,11 @@ export class ProductsViewComponent implements OnInit{
 
   openProductdDetail(element: Product){
     this.dialog.open(ProductsDetailsComponent,
-      )
+    )
+  }
 
+  obtenerCodigoCategoria(arr:any[], cat: any): any {
+    return Object.values(arr).find(obj => obj.Descripcion === cat).Codigo
   }
 
  
